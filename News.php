@@ -99,7 +99,7 @@ final class News extends GDO implements RSSItem
 
 	public function renderCard()
 	{
-		return GDO_Template::php('News', 'card/gwf_news.php', ['gdo'=>$this]);
+	    return GDO_Template::responsePHP('News', 'card/gwf_news.php', ['gdo'=>$this]);
 	}
 	
 	
