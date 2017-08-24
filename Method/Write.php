@@ -165,14 +165,14 @@ final class Write extends MethodForm
 	{
 		$this->news->saveVar('news_visible', '1');
 		$this->form = null;
-		return $this->message('msg_news_visible')->add($this->renderForm());
+		return $this->message('msg_news_visible')->add($this->renderPage());
 	}
 	
 	public function onSubmit_invisible(GDO_Form $form)
 	{
 		$this->news->saveVar('news_visible', '0');
 		$this->form = null;
-		return $this->message('msg_news_invisible')->add($this->renderForm());
+		return $this->message('msg_news_invisible')->add($this->renderPage());
 	}
 	
 	############
@@ -185,7 +185,7 @@ final class Write extends MethodForm
 	public function onSubmit_send(GDO_Form $form)
 	{
 		$this->news->saveVar('news_send', Time::getDate());
-		return $this->message('msg_news_queue')->add($this->renderForm());
+		return $this->message('msg_news_queue')->add($this->renderPage());
 		
 	}
 	
