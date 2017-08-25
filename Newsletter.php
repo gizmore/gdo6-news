@@ -22,8 +22,8 @@ final class Newsletter extends GDO
 			GDO_Int::make('newsletter_news')->unsigned(), # Last received newsletter for cronjob via web state :P
 			GDO_User::make('newsletter_user')->unique(),
 			GDO_Email::make('newsletter_email')->unique(),
-			GDO_Language::make('newsletter_lang'),
-			GDO_EmailFormat::make('newsletter_fmt'),
+			GDO_Language::make('newsletter_lang')->notNull(),
+		    GDO_EmailFormat::make('newsletter_fmt')->notNull(),
 		);
 	}
 	
@@ -40,11 +40,14 @@ final class Newsletter extends GDO
 	
 	public static function hasSubscribedMail(string $email=null) { return !!self::getByEmail($email); }
 	
+	
 	/**
 	 * @return User
 	 */
 	public function getUser() { return $this->getValue('newsletter_user'); }
 	public function getUserID() { return $this->getVar('newsletter_user'); }
 	public function hasUser() { return $this->getUserID() !== null; }
+	public function getLangISO() { return $this->getVar('newsletter_lang'); }
+	public function getMail() { return $this->getValue('newsletter_email'); }
 	
 }

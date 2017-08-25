@@ -52,9 +52,9 @@ final class Send extends MethodCronjob
 		{
 			$mail->sendToUser($user);
 		}
-		else
+		elseif ($mail = $newsletter->getMail())
 		{
-			$mail->setReceiver($newsletter->getMail());
+			$mail->setReceiver($mail);
 			if ($mail->getMailFormat() === GDO_EmailFormat::TEXT)
 			{
 				$mail->sendAsText();
