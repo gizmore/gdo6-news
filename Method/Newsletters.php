@@ -4,7 +4,6 @@ use GDO\Admin\MethodAdmin;
 use GDO\Table\MethodQueryTable;
 use GDO\News\Module_News;
 use GDO\News\Newsletter;
-use GDO\UI\GDO_EditButton;
 /**
  * Table of newsletter subscriptions.
  * @author gizmore

@@ -34,7 +34,7 @@ return array(
 ##################################################
 'list_news_admin' => '[%s] News (Admin)',
 ##################################################
-'ft_news_newsletter' => '[%s] Newsletter Subscription',
+'ft_news_newsletterabbo' => '[%s] Newsletter Subscription',
 'newsletter_subscribed' => 'I want to subscribe to the newsletter.',
 'newsletter_sub_guest_unknown' => 'For guests, the newsletter status cannot be determined.',
 'newsletter_info_subscribed' => 'You have subscribed to the newsletter. Check your %s to configure your newsletter options.',
@@ -44,6 +44,7 @@ return array(
 'msg_newsletter_unsubscribed' => 'You have unsubscribed from the newsletter.',
 'err_newsletter_already_subscribed' => 'You have already subscribed to the newsletter.',
 'err_newsletter_not_subscribed' => 'You did not have subscribed to the newsletter.',
+'err_newsletter_no_email' => 'You need to supply an email address to subscribe to the newsletter.',
 ##################################################
 'dear_member_of' => 'Member of %s',
 'mail_subj_newsletter' => '[%s] News - %s',

@@ -86,7 +86,11 @@ final class NewsletterAbbo extends MethodForm
 				}
 				$initial = array('newsletter_user' => $user->getID());
 			}
-			elseif (Newsletter::hasSubscribedMail($form->getFormVar('newsletter_email')))
+			elseif (null === ($email = $form->getFormVar('newsletter_email')))
+			{
+			    return $this->error('err_newsletter_no_email');
+			}
+			elseif (Newsletter::hasSubscribedMail($email))
 			{
 				return $this->error('err_newsletter_already_subscribed');
 			}

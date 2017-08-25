@@ -32,13 +32,13 @@ final class Newsletter extends GDO
 		return self::gdoHashcodeS($this->getVars(['newsletter_id', 'newsletter_user', 'newsletter_email']));
 	}
 	
-	public static function getByEmail(string $email) { return self::getBy('newsletter_email', $email); }
+	public static function getByEmail(string $email=null) { return self::getBy('newsletter_email', $email); }
 	
 	public static function getByUser(User $user) { return self::getBy('newsletter_user', $user->getID()); }
 	
 	public static function hasSubscribed(User $user) { return !!self::getByUser($user); }
 	
-	public static function hasSubscribedMail(string $email) { return !!self::getByEmail($email); }
+	public static function hasSubscribedMail(string $email=null) { return !!self::getByEmail($email); }
 	
 	/**
 	 * @return User
