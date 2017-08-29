@@ -12,8 +12,8 @@ use GDO\Mail\GDT_Email;
 use GDO\Mail\GDT_EmailFormat;
 use GDO\News\GDT_NewsletterStatus;
 use GDO\News\Module_News;
-use GDO\News\Newsletter;
-use GDO\User\User;
+use GDO\News\GDO_Newsletter;
+use GDO\User\GDO_User;
 /**
  * Susbscribe to the newsletter.
  * @author gizmore
@@ -50,9 +50,9 @@ final class NewsletterAbbo extends MethodForm
 	
 	public function createForm(GDT_Form $form)
 	{
-		$user = User::current();
+		$user = GDO_User::current();
 		$mem = $user->isMember();
-		$subscribed = $mem ? Newsletter::hasSubscribed($user) : true;
+		$subscribed = $mem ? GDO_Newsletter::hasSubscribed($user) : true;
 		
 		$form->addFields(array(
 			GDT_NewsletterStatus::make('status')->gdo($user),
@@ -71,10 +71,8 @@ final class NewsletterAbbo extends MethodForm
 	
 	public function formAction(GDT_Form $form)
 	{
-		$user = User::current();
-		$oldsub = $user->isMember() ? 
-			Newsletter::hasSubscribed($user) : 
-			false;
+		$user = GDO_User::current();
+		$oldsub = $user->isMember() ? GDO_Newsletter::hasSubscribed($user) : false;
 		
 		if ($form->getFormVar('yn') === 'yes')
 		{
@@ -90,7 +88,7 @@ final class NewsletterAbbo extends MethodForm
 			{
 			    return $this->error('err_newsletter_no_email');
 			}
-			elseif (Newsletter::hasSubscribedMail($email))
+			elseif (GDO_Newsletter::hasSubscribedMail($email))
 			{
 				return $this->error('err_newsletter_already_subscribed');
 			}
@@ -98,7 +96,7 @@ final class NewsletterAbbo extends MethodForm
 			{
 				$initial = $form->getFormData();
 			}
-			Newsletter::blank($initial)->insert();
+			GDO_Newsletter::blank($initial)->insert();
 			return $this->message('msg_newsletter_subscribed');
 		}
 		elseif (!$oldsub)
@@ -107,7 +105,7 @@ final class NewsletterAbbo extends MethodForm
 		}
 		else
 		{
-			Newsletter::table()->deleteWhere('newsletter_user='.$user->getID())->exec();
+		    GDO_Newsletter::table()->deleteWhere('newsletter_user='.$user->getID())->exec();
 			return $this->message('msg_newsletter_unsubscribed');
 		}
 	}

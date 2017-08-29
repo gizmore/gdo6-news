@@ -3,7 +3,7 @@ namespace GDO\News\Method;
 
 use GDO\Core\Method;
 use GDO\Util\Common;
-use GDO\News\Newsletter;
+use GDO\News\GDO_Newsletter;
 
 /**
  * Unsubscribe newsletter via token.
@@ -16,7 +16,7 @@ final class Unsubscribe extends Method
 	
 	public function execute()
 	{
-		if ( (!($newsletter = Newsletter::getById(Common::getRequestString('id')))) ||
+	    if ( (!($newsletter = GDO_Newsletter::getById(Common::getRequestString('id')))) ||
 			 ($newsletter->gdoHashcode() !== Common::getRequestString('token')) )
 		{
 			return $this->error('err_newsletter_not_subscribed');

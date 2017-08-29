@@ -1,6 +1,6 @@
 <?php
-use GDO\User\User;
+use GDO\User\GDO_User;
 
-$user = User::current();
+$user = GDO_User::current();
 
 echo $response->getHTML();

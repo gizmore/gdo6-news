@@ -3,7 +3,7 @@ namespace GDO\News\Method;
 
 use GDO\Admin\MethodAdmin;
 use GDO\News\Module_News;
-use GDO\News\News;
+use GDO\News\GDO_News;
 use GDO\Table\MethodQueryTable;
 use GDO\UI\GDT_EditButton;
 
@@ -22,7 +22,7 @@ final class Admin extends MethodQueryTable
 	
 	public function getQuery()
 	{
-		return News::table()->select();
+	    return GDO_News::table()->select();
 	}
 	
 	public function execute()

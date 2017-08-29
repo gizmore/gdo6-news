@@ -2,14 +2,14 @@
 namespace GDO\News\Method;
 
 use GDO\Core\Method;
-use GDO\News\News;
+use GDO\News\GDO_News;
 use GDO\News\RSS;
 
 final class RSSFeed extends Method
 {
 	public function execute()
 	{
-	    $query = News::table()->select()->limit(10);
+	    $query = GDO_News::table()->select()->limit(10);
 	    $query->where("news_visible")->order('news_created', false);
 	    $items = $query->exec()->fetchAllObjects();
 	    

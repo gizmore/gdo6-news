@@ -3,7 +3,7 @@ namespace GDO\News\Method;
 use GDO\Admin\MethodAdmin;
 use GDO\Table\MethodQueryTable;
 use GDO\News\Module_News;
-use GDO\News\Newsletter;
+use GDO\News\GDO_Newsletter;
 /**
  * Table of newsletter subscriptions.
  * @author gizmore
@@ -18,7 +18,7 @@ final class Newsletters extends MethodQueryTable
 	
 	public function getQuery()
 	{
-		return Newsletter::table()->select();
+	    return GDO_Newsletter::table()->select();
 	}
 	
 	public function execute()

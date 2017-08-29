@@ -3,7 +3,7 @@ namespace GDO\News;
 
 use GDO\Template\GDT_Template;
 use GDO\UI\GDT_Label;
-use GDO\User\User;
+use GDO\User\GDO_User;
 use GDO\Form\WithIcon;
 
 final class GDT_NewsletterStatus extends GDT_Label

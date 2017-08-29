@@ -2,9 +2,9 @@
 # Navbar
 use GDO\Template\GDT_Bar;
 use GDO\UI\GDT_Link;
-use GDO\User\User;
+use GDO\User\GDO_User;
 
-$user = User::current();
+$user = GDO_User::current();
 $bar = GDT_Bar::make();
 $bar->addFields(array(
     GDT_Link::make('link_newsletter')->href(href('News', 'NewsletterAbbo'))->icon('add_alert'),

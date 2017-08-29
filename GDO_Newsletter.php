@@ -8,9 +8,9 @@ use GDO\Mail\GDT_Email;
 use GDO\Mail\GDT_EmailFormat;
 use GDO\Type\GDT_Int;
 use GDO\User\GDT_User;
-use GDO\User\User;
+use GDO\User\GDO_User;
 
-final class Newsletter extends GDO
+final class GDO_Newsletter extends GDO
 {
 	###########
 	### GDO ###
@@ -34,9 +34,9 @@ final class Newsletter extends GDO
 	
 	public static function getByEmail(string $email=null) { return self::getBy('newsletter_email', $email); }
 	
-	public static function getByUser(User $user) { return self::getBy('newsletter_user', $user->getID()); }
+	public static function getByUser(GDO_User $user) { return self::getBy('newsletter_user', $user->getID()); }
 	
-	public static function hasSubscribed(User $user) { return !!self::getByUser($user); }
+	public static function hasSubscribed(GDO_User $user) { return !!self::getByUser($user); }
 	
 	public static function hasSubscribedMail(string $email=null) { return !!self::getByEmail($email); }
 	

@@ -9,7 +9,7 @@ use GDO\Language\GDT_Language;
 use GDO\Type\GDT_Message;
 use GDO\Type\GDT_String;
 
-final class NewsText extends GDO
+final class GDO_NewsText extends GDO
 {
 	###########
 	### GDO ###
@@ -18,7 +18,7 @@ final class NewsText extends GDO
 	public function gdoColumns()
 	{
 		return array(
-			GDT_Object::make('newstext_news')->table(News::table())->primary(),
+		    GDT_Object::make('newstext_news')->table(GDO_News::table())->primary(),
 			GDT_Language::make('newstext_lang')->primary(),
 			GDT_String::make('newstext_title')->notNull(),
 			GDT_Message::make('newstext_message')->notNull(),

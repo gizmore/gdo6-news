@@ -1,14 +1,14 @@
 <?php
-use GDO\News\News;
+use GDO\News\GDO_News;
 use GDO\UI\GDT_Button;
 use GDO\UI\GDT_IconButton;
 use GDO\UI\GDT_Link;
-use GDO\User\User;
+use GDO\User\GDO_User;
 
-$gdo instanceof News;
+$gdo instanceof GDO_News;
 ?>
 <?php
-$user = User::current();
+$user = GDO_User::current();
 $comments = $gdo->gdoCommentTable();
 ?>
 <md-card flex layout-fill class="md-whiteframe-8dp">

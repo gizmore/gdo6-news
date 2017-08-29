@@ -5,9 +5,9 @@ use GDO\Cronjob\MethodCronjob;
 use GDO\Date\Time;
 use GDO\Mail\GDT_EmailFormat;
 use GDO\Mail\Mail;
-use GDO\News\News;
+use GDO\News\GDO_News;
 use GDO\UI\GDT_Link;
-use GDO\News\Newsletter;
+use GDO\News\GDO_Newsletter;
 
 /**
  * Send newsletter via cronjob.
@@ -19,7 +19,7 @@ final class Send extends MethodCronjob
 {
 	public function run()
 	{
-		$table = News::table();
+	    $table = GDO_News::table();
 		$query = $table->select();
 		$query->where("news_send IS NOT NULL AND news_sent IS NULL");
 		$query->order('news_send');
@@ -29,10 +29,10 @@ final class Send extends MethodCronjob
 		}
 	}
 	
-	private function sendNewsletter(News $news)
+	private function sendNewsletter(GDO_News $news)
 	{
 		$this->logNotice("Sending newsletter for {$news->getTitle()}");
-		$table = Newsletter::table();
+		$table = GDO_Newsletter::table();
 		$query = $table->select('*')->where("newsletter_news IS NULL OR newsletter_news != {$news->getID()}");
 		$result = $query->exec();
 		$count = 0;
@@ -45,7 +45,7 @@ final class Send extends MethodCronjob
 		$news->saveVar('news_sent', Time::getDate());
 	}
 	
-	private function sendNewsletterTo(News $news, Newsletter $newsletter)
+	private function sendNewsletterTo(GDO_News $news, GDO_Newsletter $newsletter)
 	{
 		$mail = $this->mailSkeleton($news, $newsletter);
 		if ($user = $newsletter->getUser())
@@ -67,7 +67,7 @@ final class Send extends MethodCronjob
 		$newsletter->saveVar('newsletter_news', $news->getID());
 	}
 		
-	private function mailSkeleton(News $news, Newsletter $newsletter)
+	private function mailSkeleton(GDO_News $news, GDO_Newsletter $newsletter)
 	{
 		$user = $newsletter->getUser();
 		$iso = $user ? $user->getLangISO() : $newsletter->getLangISO();

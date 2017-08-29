@@ -1,21 +1,28 @@
 <?php
 namespace GDO\News;
 
-use GDO\Core\Module;
+use GDO\Core\GDO_Module;
 use GDO\Template\GDT_Bar;
 use GDO\Type\GDT_Checkbox;
 use GDO\UI\GDT_Link;
 
-final class Module_News extends Module
+final class Module_News extends GDO_Module
 {
 	public $module_version = "6.01";
 	
 	##############
 	### Module ###
 	##############
-	public function getClasses() { return array('GDO\News\News', 'GDO\News\NewsText', 'GDO\News\NewsComments', 'GDO\News\Newsletter'); }
-	public function onLoadLanguage() { $this->loadLanguage('lang/news'); }
 	public function href_administrate_module() { return href('News', 'Admin'); }
+	public function onLoadLanguage() { $this->loadLanguage('lang/news'); }
+	public function getClasses()
+	{
+	    return array(
+	        'GDO\News\GDO_News',
+	        'GDO\News\GDO_NewsText', 
+	        'GDO\News\GDO_NewsComments',
+    	    'GDO\News\GDO_Newsletter');
+	}
 
 	##############
 	### Config ###

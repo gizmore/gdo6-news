@@ -1,7 +1,7 @@
 <?php
 namespace GDO\News;
 
-use GDO\Category\Category;
+use GDO\Category\GDO_Category;
 use GDO\Category\GDT_Category;
 use GDO\Comment\CommentedObject;
 use GDO\DB\GDO;
@@ -12,7 +12,7 @@ use GDO\Date\GDT_DateTime;
 use GDO\Language\Trans;
 use GDO\Template\GDT_Template;
 use GDO\Type\GDT_Checkbox;
-use GDO\User\User;
+use GDO\User\GDO_User;
 /**
  * News database.
  * @author gizmore
@@ -20,15 +20,15 @@ use GDO\User\User;
  * @since 2.0
  * @see NewsText
  */
-final class News extends GDO implements RSSItem
+final class GDO_News extends GDO implements RSSItem
 {
 	################
 	### Comments ###
 	################
 	use CommentedObject;
-	public function gdoCommentTable() { return NewsComments::table(); }
+	public function gdoCommentTable() { return GDO_NewsComments::table(); }
 	public function gdoCommentsEnabled() { return $this->isVisible() && $this->gdoCommentTable()->gdoEnabled(); }
-	public function gdoCanComment(User $user) { return true; }
+	public function gdoCanComment(GDO_User $user) { return true; }
 	
 	###########
 	### GDO ###
@@ -54,7 +54,7 @@ final class News extends GDO implements RSSItem
 	public function isSending() { return ($this->getSentDate() === null) && ($this->getSendDate() !== null); }
 	
 	/**
-	 * @return Category
+	 * @return GDO_Category
 	 */
 	public function getCategory() { return $this->getValue('news_category'); }
 	public function getCategoryID() { return $this->getVar('news_category'); }
@@ -69,7 +69,7 @@ final class News extends GDO implements RSSItem
 	public function getCreatorID() { return $this->getVar('news_creator'); }
 	
 	### Perm ###
-	public function canEdit(User $user)
+	public function canEdit(GDO_User $user)
 	{
 		return true;
 	}
@@ -107,7 +107,7 @@ final class News extends GDO implements RSSItem
 	### Translation ###
 	###################
 	/**
-	 * @return NewsText
+	 * @return GDO_NewsText
 	 */
 	public function getTxt()
 	{
@@ -116,7 +116,7 @@ final class News extends GDO implements RSSItem
 	
 	/**
 	 * @param string $iso
-	 * @return NewsText
+	 * @return GDO_NewsText
 	 */
 	public function getText(string $iso, bool $fallback=true)
 	{
@@ -132,13 +132,13 @@ final class News extends GDO implements RSSItem
 	}
 
 	/**
-	 * @return NewsText[]
+	 * @return GDO_NewsText[]
 	 */
 	public function getTexts()
 	{
 		if (!($cache = $this->tempGet('newstexts')))
 		{
-			$query = NewsText::table()->select('newstext_lang, gwf_newstext.*');
+		    $query = GDO_NewsText::table()->select('newstext_lang, gdo_newstext.*');
 			$query->where("newstext_news=".$this->getID());
 			$cache = $query->exec()->fetchAllArrayAssoc2dObject();
 			$this->tempSet('newstexts', $cache);
@@ -174,6 +174,5 @@ final class News extends GDO implements RSSItem
     {
         return $this->getMessage();
     }
-
 	
 }

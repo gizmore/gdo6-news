@@ -11,8 +11,8 @@ use GDO\Form\MethodForm;
 use GDO\Language\Module_Language;
 use GDO\News\GDT_NewsStatus;
 use GDO\News\Module_News;
-use GDO\News\News;
-use GDO\News\NewsText;
+use GDO\News\GDO_News;
+use GDO\News\GDO_NewsText;
 use GDO\Type\GDT_Message;
 use GDO\Type\GDT_String;
 use GDO\UI\GDT_Divider;
@@ -40,7 +40,7 @@ final class Write extends MethodForm
 	public function getPermission() { return 'staff'; }
 	
 	/**
-	 * @var News
+	 * @var GDO_News
 	 */
 	private $news;
 	
@@ -48,7 +48,7 @@ final class Write extends MethodForm
 	{
 		if ($id = Common::getRequestString('id'))
 		{
-			$this->news = News::table()->find($id);
+		    $this->news = GDO_News::table()->find($id);
 		}
 	}
 	
@@ -61,7 +61,7 @@ final class Write extends MethodForm
 	
 	public function createForm(GDT_Form $form)
 	{
-		$news = News::table();
+	    $news = GDO_News::table();
 		
 		# Category select
 		$form->addFields(array(
@@ -130,7 +130,7 @@ final class Write extends MethodForm
 	public function formValidated(GDT_Form $form)
 	{
 		# Update news
-		$news = $this->news ? $this->news : News::blank();
+	    $news = $this->news ? $this->news : GDO_News::blank();
 		$news->setVars($form->getField('news_category')->getGDOData());
 		$news->replace();
 
@@ -141,7 +141,7 @@ final class Write extends MethodForm
 			$message = trim($data['newstext_message']);
 			if ($title || $message)
 			{
-				$text = NewsText::blank(array(
+			    $text = GDO_NewsText::blank(array(
 					'newstext_news' => $news->getID(),
 					'newstext_lang' => $iso,
 					'newstext_title' => $title,
