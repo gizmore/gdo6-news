@@ -1,7 +1,7 @@
 <?php 
-use GDO\Template\GDO_Bar;
-use GDO\UI\GDO_Link;
-$navbar instanceof GDO_Bar;
+use GDO\Template\GDT_Bar;
+use GDO\UI\GDT_Link;
+$navbar instanceof GDT_Bar;
 $navbar->addFields(array(
-	GDO_Link::make('link_news')->href(href('News', 'List'))->label('link_news'),
+	GDT_Link::make('link_news')->href(href('News', 'List'))->label('link_news'),
 ));

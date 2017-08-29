@@ -1,16 +1,16 @@
 <?php
 namespace GDO\News\Method;
 
-use GDO\Form\GDO_AntiCSRF;
-use GDO\Form\GDO_Enum;
-use GDO\Form\GDO_Form;
-use GDO\Form\GDO_Submit;
+use GDO\Form\GDT_AntiCSRF;
+use GDO\Form\GDT_Enum;
+use GDO\Form\GDT_Form;
+use GDO\Form\GDT_Submit;
 use GDO\Form\MethodForm;
-use GDO\Language\GDO_Language;
+use GDO\Language\GDT_Language;
 use GDO\Language\Trans;
-use GDO\Mail\GDO_Email;
-use GDO\Mail\GDO_EmailFormat;
-use GDO\News\GDO_NewsletterStatus;
+use GDO\Mail\GDT_Email;
+use GDO\Mail\GDT_EmailFormat;
+use GDO\News\GDT_NewsletterStatus;
 use GDO\News\Module_News;
 use GDO\News\Newsletter;
 use GDO\User\User;
@@ -48,28 +48,28 @@ final class NewsletterAbbo extends MethodForm
 		return $this->templatePHP('newsletter.php', $tVars);
 	}
 	
-	public function createForm(GDO_Form $form)
+	public function createForm(GDT_Form $form)
 	{
 		$user = User::current();
 		$mem = $user->isMember();
 		$subscribed = $mem ? Newsletter::hasSubscribed($user) : true;
 		
 		$form->addFields(array(
-			GDO_NewsletterStatus::make('status')->gdo($user),
-			GDO_Enum::make('yn')->enumValues('yes', 'no')->initial($subscribed?'yes':'no')->label('newsletter_subscribed')->writable($mem),
-		    GDO_EmailFormat::make('newsletter_fmt')->initial($mem?$user->getMailFormat():GDO_EmailFormat::HTML)->writable(!$mem),
-		    GDO_Language::make('newsletter_lang')->initial($mem?$user->getLangISO():Trans::$ISO)->writable(!$mem),
-		    GDO_Email::make('newsletter_email')->initial($user->getMail())->writable(!$mem),
-			GDO_Submit::make(),
-			GDO_AntiCSRF::make(),
+			GDT_NewsletterStatus::make('status')->gdo($user),
+			GDT_Enum::make('yn')->enumValues('yes', 'no')->initial($subscribed?'yes':'no')->label('newsletter_subscribed')->writable($mem),
+		    GDT_EmailFormat::make('newsletter_fmt')->initial($mem?$user->getMailFormat():GDT_EmailFormat::HTML)->writable(!$mem),
+		    GDT_Language::make('newsletter_lang')->initial($mem?$user->getLangISO():Trans::$ISO)->writable(!$mem),
+		    GDT_Email::make('newsletter_email')->initial($user->getMail())->writable(!$mem),
+			GDT_Submit::make(),
+			GDT_AntiCSRF::make(),
 		));
 	}
-	public function formValidated(GDO_Form $form)
+	public function formValidated(GDT_Form $form)
 	{
 		return $this->formAction($form)->add($this->renderPage());
 	}
 	
-	public function formAction(GDO_Form $form)
+	public function formAction(GDT_Form $form)
 	{
 		$user = User::current();
 		$oldsub = $user->isMember() ? 

@@ -4,30 +4,30 @@ namespace GDO\News\Method;
 use GDO\Admin\MethodAdmin;
 use GDO\Core\Website;
 use GDO\Date\Time;
-use GDO\Form\GDO_AntiCSRF;
-use GDO\Form\GDO_Form;
-use GDO\Form\GDO_Submit;
+use GDO\Form\GDT_AntiCSRF;
+use GDO\Form\GDT_Form;
+use GDO\Form\GDT_Submit;
 use GDO\Form\MethodForm;
 use GDO\Language\Module_Language;
-use GDO\News\GDO_NewsStatus;
+use GDO\News\GDT_NewsStatus;
 use GDO\News\Module_News;
 use GDO\News\News;
 use GDO\News\NewsText;
-use GDO\Type\GDO_Message;
-use GDO\Type\GDO_String;
-use GDO\UI\GDO_Divider;
-use GDO\UI\GDO_Tab;
-use GDO\UI\GDO_Tabs;
+use GDO\Type\GDT_Message;
+use GDO\Type\GDT_String;
+use GDO\UI\GDT_Divider;
+use GDO\UI\GDT_Tab;
+use GDO\UI\GDT_Tabs;
 use GDO\Util\Common;
 
 /**
  * Write a news entry.
  * This is a bit more complex form with tabs for each edited language.
  * 
- * @see GDO_Tab
- * @see GDO_Tabs
+ * @see GDT_Tab
+ * @see GDT_Tabs
  * @see News
- * @see GDO_Form
+ * @see GDT_Form
  * 
  * @author gizmore
  * @since 2.0
@@ -59,27 +59,27 @@ final class Write extends MethodForm
 		return $this->renderNavBar('News')->add($newstabs)->add($response);
 	}
 	
-	public function createForm(GDO_Form $form)
+	public function createForm(GDT_Form $form)
 	{
 		$news = News::table();
 		
 		# Category select
 		$form->addFields(array(
 			$news->gdoColumn('news_category'),
-			GDO_Divider::make('div_texts'),
+			GDT_Divider::make('div_texts'),
 		));
 		
 		# Translation tabs
-		$tabs = GDO_Tabs::make('tabs');
+		$tabs = GDT_Tabs::make('tabs');
 		foreach (Module_Language::instance()->cfgSupported() as $iso => $language)
 		{
 			# New tab
-			$tab = GDO_Tab::make('tab_'.$iso)->rawLabel($language->displayName());
+			$tab = GDT_Tab::make('tab_'.$iso)->rawLabel($language->displayName());
 
 			# 2 Fields
 			$primary = $iso === GWF_LANGUAGE;
-			$title = GDO_String::make("iso][$iso][newstext_title")->label('title')->notNull($primary);
-			$message = GDO_Message::make("iso][$iso][newstext_message")->label('message')->notNull($primary);
+			$title = GDT_String::make("iso][$iso][newstext_title")->label('title')->notNull($primary);
+			$message = GDT_Message::make("iso][$iso][newstext_message")->label('message')->notNull($primary);
 			if ($this->news)
 			{ # Old values
 				if ($text = $this->news->getText($iso, false))
@@ -97,37 +97,37 @@ final class Write extends MethodForm
 		
 		# Buttons
 		$form->addFields(array(
-			GDO_Submit::make(),
-			GDO_AntiCSRF::make(),
+			GDT_Submit::make(),
+			GDT_AntiCSRF::make(),
 		));
 		
 		# Dynamic buttons
 		if ($this->news)
 		{
 			$form->addFields(array(
-				GDO_Submit::make('preview'),
+				GDT_Submit::make('preview'),
 			));
 			
 			if (!$this->news->isVisible())
 			{
-				$form->addField(GDO_Submit::make('visible'));
+				$form->addField(GDT_Submit::make('visible'));
 			}
 			else
 			{
-				$form->addField(GDO_Submit::make('invisible'));
+				$form->addField(GDT_Submit::make('invisible'));
 				if (!$this->news->isSent())
 				{
-					$form->addField(GDO_Submit::make('send'));
+					$form->addField(GDT_Submit::make('send'));
 				}
 			}
 			
-			$form->addField(GDO_NewsStatus::make('status'));
+			$form->addField(GDT_NewsStatus::make('status'));
 			
 			$form->withGDOValuesFrom($this->news);
 		}
 	}
 	
-	public function formValidated(GDO_Form $form)
+	public function formValidated(GDT_Form $form)
 	{
 		# Update news
 		$news = $this->news ? $this->news : News::blank();
@@ -161,14 +161,14 @@ final class Write extends MethodForm
 		return $this->message('msg_news_created')->add(Website::redirectMessage($hrefEdit));
 	}
 	
-	public function onSubmit_visible(GDO_Form $form)
+	public function onSubmit_visible(GDT_Form $form)
 	{
 		$this->news->saveVar('news_visible', '1');
 		$this->form = null;
 		return $this->message('msg_news_visible')->add($this->renderPage());
 	}
 	
-	public function onSubmit_invisible(GDO_Form $form)
+	public function onSubmit_invisible(GDT_Form $form)
 	{
 		$this->news->saveVar('news_visible', '0');
 		$this->form = null;
@@ -178,11 +178,11 @@ final class Write extends MethodForm
 	############
 	### Mail ###
 	############
-	public function onSubmit_preview(GDO_Form $form)
+	public function onSubmit_preview(GDT_Form $form)
 	{
 	}
 	
-	public function onSubmit_send(GDO_Form $form)
+	public function onSubmit_send(GDT_Form $form)
 	{
 		$this->news->saveVar('news_send', Time::getDate());
 		return $this->message('msg_news_queue')->add($this->renderPage());

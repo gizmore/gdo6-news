@@ -1,6 +1,6 @@
 <?php
-use GDO\News\GDO_NewsStatus;
-$field instanceof GDO_NewsStatus;
+use GDO\News\GDT_NewsStatus;
+$field instanceof GDT_NewsStatus;
 ?>
 <?php $news = $field->getNews(); ?>
 <?php

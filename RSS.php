@@ -2,8 +2,8 @@
 namespace GDO\News;
 
 use GDO\Language\Trans;
-use GDO\Template\GDO_Template;
-use GDO\Net\GDO_Url;
+use GDO\Template\GDT_Template;
+use GDO\Net\GDT_Url;
 use GDO\Date\Time;
 
 final class RSS
@@ -83,7 +83,7 @@ final class RSS
 			'feed_title' => $this->title,
 			'feed_description' => $this->descr,
 			'language' => Trans::$ISO,
-			'image_url' => GDO_Url::absolute('/favicon.ico'),
+			'image_url' => GDT_Url::absolute('/favicon.ico'),
 			'image_link' => $this->webURL,
 			'image_width' => '32',
 			'image_height' => '32',
@@ -91,7 +91,7 @@ final class RSS
 			'build_date' => $rss_date,
 		);
 		
-		return GDO_Template::php('News', 'rss.php', $tVars);
+		return GDT_Template::php('News', 'rss.php', $tVars);
 	}
 	
 }

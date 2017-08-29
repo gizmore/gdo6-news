@@ -2,16 +2,16 @@
 namespace GDO\News;
 
 use GDO\Category\Category;
-use GDO\Category\GDO_Category;
+use GDO\Category\GDT_Category;
 use GDO\Comment\CommentedObject;
 use GDO\DB\GDO;
-use GDO\DB\GDO_AutoInc;
-use GDO\DB\GDO_CreatedAt;
-use GDO\DB\GDO_CreatedBy;
-use GDO\Date\GDO_DateTime;
+use GDO\DB\GDT_AutoInc;
+use GDO\DB\GDT_CreatedAt;
+use GDO\DB\GDT_CreatedBy;
+use GDO\Date\GDT_DateTime;
 use GDO\Language\Trans;
-use GDO\Template\GDO_Template;
-use GDO\Type\GDO_Checkbox;
+use GDO\Template\GDT_Template;
+use GDO\Type\GDT_Checkbox;
 use GDO\User\User;
 /**
  * News database.
@@ -36,13 +36,13 @@ final class News extends GDO implements RSSItem
 	public function gdoColumns()
 	{
 		return array(
-			GDO_AutoInc::make('news_id'),
-		    GDO_Category::make('news_category')->emptyInitial(t('no_category')),
-			GDO_Checkbox::make('news_visible')->notNull()->initial('0'),
-			GDO_DateTime::make('news_send')->label('news_sending'), # is in queue? (sending)
-			GDO_DateTime::make('news_sent')->label('news_sent'), # is out of queue? (sent)
-			GDO_CreatedAt::make('news_created'),
-			GDO_CreatedBy::make('news_creator'),
+			GDT_AutoInc::make('news_id'),
+		    GDT_Category::make('news_category')->emptyInitial(t('no_category')),
+			GDT_Checkbox::make('news_visible')->notNull()->initial('0'),
+			GDT_DateTime::make('news_send')->label('news_sending'), # is in queue? (sending)
+			GDT_DateTime::make('news_sent')->label('news_sent'), # is out of queue? (sent)
+			GDT_CreatedAt::make('news_created'),
+			GDT_CreatedBy::make('news_creator'),
 		);
 	}
 	
@@ -99,7 +99,7 @@ final class News extends GDO implements RSSItem
 
 	public function renderCard()
 	{
-	    return GDO_Template::responsePHP('News', 'card/gwf_news.php', ['gdo'=>$this]);
+	    return GDT_Template::responsePHP('News', 'card/gwf_news.php', ['gdo'=>$this]);
 	}
 	
 	

@@ -2,9 +2,9 @@
 namespace GDO\News;
 
 use GDO\Core\Module;
-use GDO\Template\GDO_Bar;
-use GDO\Type\GDO_Checkbox;
-use GDO\UI\GDO_Link;
+use GDO\Template\GDT_Bar;
+use GDO\Type\GDT_Checkbox;
+use GDO\UI\GDT_Link;
 
 final class Module_News extends Module
 {
@@ -23,10 +23,10 @@ final class Module_News extends Module
 	public function getConfig()
 	{
 		return array(
-			GDO_Checkbox::make('news_comments')->initial('1'),
-			GDO_Checkbox::make('news_guests')->initial('1'),
-			GDO_Checkbox::make('newsletter_guests')->initial('1'),
-			GDO_Checkbox::make('news_guest_comments')->initial('1'),
+			GDT_Checkbox::make('news_comments')->initial('1'),
+			GDT_Checkbox::make('news_guests')->initial('1'),
+			GDT_Checkbox::make('newsletter_guests')->initial('1'),
+			GDT_Checkbox::make('news_guest_comments')->initial('1'),
 		);
 	}
 	public function cfgComments() { return $this->getConfigValue('news_comments'); }
@@ -47,10 +47,10 @@ final class Module_News extends Module
 	    return $this->templatePHP('admin_tabs.php');
 	}
 	
-	public function hookLeftBar(GDO_Bar $navbar)
+	public function hookLeftBar(GDT_Bar $navbar)
 	{
 	    $navbar->addFields(array(
-    	    GDO_Link::make('link_news')->href(href('News', 'NewsList'))->label('link_news'),
+    	    GDT_Link::make('link_news')->href(href('News', 'NewsList'))->label('link_news'),
 	    ));
 	}
 }

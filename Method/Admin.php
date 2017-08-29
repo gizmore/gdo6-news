@@ -5,7 +5,7 @@ use GDO\Admin\MethodAdmin;
 use GDO\News\Module_News;
 use GDO\News\News;
 use GDO\Table\MethodQueryTable;
-use GDO\UI\GDO_EditButton;
+use GDO\UI\GDT_EditButton;
 
 final class Admin extends MethodQueryTable
 {
@@ -16,7 +16,7 @@ final class Admin extends MethodQueryTable
 	public function getHeaders()
 	{
 		return array_merge(array(
-			GDO_EditButton::make(),
+			GDT_EditButton::make(),
 		), parent::getHeaders());
 	}
 	

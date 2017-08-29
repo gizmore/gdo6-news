@@ -3,10 +3,10 @@ namespace GDO\News\Method;
 
 use GDO\Cronjob\MethodCronjob;
 use GDO\Date\Time;
-use GDO\Mail\GDO_EmailFormat;
+use GDO\Mail\GDT_EmailFormat;
 use GDO\Mail\Mail;
 use GDO\News\News;
-use GDO\UI\GDO_Link;
+use GDO\UI\GDT_Link;
 use GDO\News\Newsletter;
 
 /**
@@ -55,7 +55,7 @@ final class Send extends MethodCronjob
 		elseif ($mail = $newsletter->getMail())
 		{
 			$mail->setReceiver($mail);
-			if ($mail->getMailFormat() === GDO_EmailFormat::TEXT)
+			if ($mail->getMailFormat() === GDT_EmailFormat::TEXT)
 			{
 				$mail->sendAsText();
 			}
@@ -77,7 +77,7 @@ final class Send extends MethodCronjob
 		$title = html($news->getTitleISO($iso));
 		$author = $news->getCreator()->displayNameLabel();
 		$message = html($news->getMessageISO($iso));
-		$unsubscribeLink = GDO_Link::anchor(
+		$unsubscribeLink = GDT_Link::anchor(
 				url('News', 'Unsubscribe', '&id='.$newsletter->getID().'&token='.$newsletter->gdoHashcode()));
 		$mail = Mail::botMail();
 		$mail->setSubject(tiso($iso, 'mail_subj_newsletter', [$sitename, $title]));

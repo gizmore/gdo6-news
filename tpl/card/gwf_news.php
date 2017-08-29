@@ -1,8 +1,8 @@
 <?php
 use GDO\News\News;
-use GDO\UI\GDO_Button;
-use GDO\UI\GDO_IconButton;
-use GDO\UI\GDO_Link;
+use GDO\UI\GDT_Button;
+use GDO\UI\GDT_IconButton;
+use GDO\UI\GDT_Link;
 use GDO\User\User;
 
 $gdo instanceof News;
@@ -29,16 +29,16 @@ $comments = $gdo->gdoCommentTable();
 <?php
 if ($gdo->canEdit($user))
 {
-	echo GDO_IconButton::make()->href(href('News', 'Write', '&id='.$gdo->getID()))->icon('edit')->renderCell(); 
+	echo GDT_IconButton::make()->href(href('News', 'Write', '&id='.$gdo->getID()))->icon('edit')->renderCell(); 
 }
 if ($gdo->gdoCommentsEnabled())
 {
     
     $count = $gdo->getCommentCount();
-    echo GDO_Link::make('link_comments')->label('link_comments', [$count])->icon('feedback')->href(href('News', 'Comments', '&id='.$gdo->getID()))->renderCell();
+    echo GDT_Link::make('link_comments')->label('link_comments', [$count])->icon('feedback')->href(href('News', 'Comments', '&id='.$gdo->getID()))->renderCell();
     if ($gdo->gdoCanComment($user))
     {
-    	echo GDO_Button::make('btn_write_comment')->href(href('News', 'WriteComment', '&id='.$gdo->getID()))->icon('reply')->renderCell();
+    	echo GDT_Button::make('btn_write_comment')->href(href('News', 'WriteComment', '&id='.$gdo->getID()))->icon('reply')->renderCell();
     }
 }
 ?>

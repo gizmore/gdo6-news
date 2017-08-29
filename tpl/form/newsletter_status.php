@@ -1,14 +1,14 @@
 <?php
-use GDO\News\GDO_NewsletterStatus;
+use GDO\News\GDT_NewsletterStatus;
 use GDO\News\Newsletter;
-use GDO\UI\GDO_Link;
-$field instanceof GDO_NewsletterStatus;
+use GDO\UI\GDT_Link;
+$field instanceof GDT_NewsletterStatus;
 ?>
 <?php $user = $field->getUser(); ?>
 <?php
 if ($user->isMember())
 {
-	$linkSettings = GDO_Link::anchor(href('Account', 'Form'), t('link_mail_settings'));
+	$linkSettings = GDT_Link::anchor(href('Account', 'Form'), t('link_mail_settings'));
 	if (Newsletter::hasSubscribed($user))
 	{
 		$field->icon('check');

@@ -2,12 +2,12 @@
 namespace GDO\News;
 
 use GDO\DB\GDO;
-use GDO\DB\GDO_AutoInc;
-use GDO\Language\GDO_Language;
-use GDO\Mail\GDO_Email;
-use GDO\Mail\GDO_EmailFormat;
-use GDO\Type\GDO_Int;
-use GDO\User\GDO_User;
+use GDO\DB\GDT_AutoInc;
+use GDO\Language\GDT_Language;
+use GDO\Mail\GDT_Email;
+use GDO\Mail\GDT_EmailFormat;
+use GDO\Type\GDT_Int;
+use GDO\User\GDT_User;
 use GDO\User\User;
 
 final class Newsletter extends GDO
@@ -18,12 +18,12 @@ final class Newsletter extends GDO
 	public function gdoColumns()
 	{
 		return array(
-			GDO_AutoInc::make('newsletter_id'),
-			GDO_Int::make('newsletter_news')->unsigned(), # Last received newsletter for cronjob via web state :P
-			GDO_User::make('newsletter_user')->unique(),
-			GDO_Email::make('newsletter_email')->unique(),
-			GDO_Language::make('newsletter_lang')->notNull(),
-		    GDO_EmailFormat::make('newsletter_fmt')->notNull(),
+			GDT_AutoInc::make('newsletter_id'),
+			GDT_Int::make('newsletter_news')->unsigned(), # Last received newsletter for cronjob via web state :P
+			GDT_User::make('newsletter_user')->unique(),
+			GDT_Email::make('newsletter_email')->unique(),
+			GDT_Language::make('newsletter_lang')->notNull(),
+		    GDT_EmailFormat::make('newsletter_fmt')->notNull(),
 		);
 	}
 	
