@@ -11,7 +11,7 @@ $gdo instanceof News;
 $user = User::current();
 $comments = $gdo->gdoCommentTable();
 ?>
-<md-card flex="100" class="md-whiteframe-8dp">
+<md-card flex layout-fill class="md-whiteframe-8dp">
   <md-card-title>
     <md-card-title-text>
       <span class="md-headline">
