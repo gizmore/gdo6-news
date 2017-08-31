@@ -15,7 +15,7 @@ return array(
 'newsletter_guests' => 'Public newsletter?',
 'news_guest_comments' => 'Allow Guest comments?',
 ##################################################
-'list_news_list' => '[%s] News',
+'list_newslist' => '[%s] News',
 ##################################################
 'newsletter_news' => 'NewsID',
 ##################################################
