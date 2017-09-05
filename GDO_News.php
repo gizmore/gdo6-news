@@ -63,7 +63,7 @@ final class GDO_News extends GDO implements RSSItem
 	public function getSentDate() { return $this->getVar('news_sent'); }
 	public function getCreateDate() { return $this->getVar('news_created'); }
 	/**
-	 * @return User
+	 * @return GDO_User
 	 */
 	public function getCreator() { return $this->getValue('news_creator'); }
 	public function getCreatorID() { return $this->getVar('news_creator'); }

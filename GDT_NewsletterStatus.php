@@ -21,7 +21,7 @@ final class GDT_NewsletterStatus extends GDT_Label
 	}
 	
 	/**
-	 * @return User
+	 * @return GDO_User
 	 */
 	public function getUser()
 	{
