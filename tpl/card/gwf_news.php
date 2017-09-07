@@ -14,10 +14,10 @@ $comments = $gdo->gdoCommentTable();
 <md-card flex layout-fill class="md-whiteframe-8dp">
   <md-card-title>
     <md-card-title-text>
-      <span class="md-headline">
+      <div class="md-headline">
         <div>“<?= html($gdo->getTitle()); ?>” - <?= $gdo->getCreator()->renderCell(); ?></div>
         <div class="gdo-card-date"><?= t($gdo->getCreateDate()); ?></div>
-      </span>
+      </div>
     </md-card-title-text>
   </md-card-title>
   <gdo-div></gdo-div>
