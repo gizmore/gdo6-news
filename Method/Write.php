@@ -154,6 +154,7 @@ final class Write extends MethodForm
 		{
 			$this->news->tempUnset('newstexts');
 			$this->news->recache();
+			$this->resetForm();
 			return $this->message('msg_news_edited')->add($this->renderPage());
 		}
 		
@@ -164,14 +165,14 @@ final class Write extends MethodForm
 	public function onSubmit_visible(GDT_Form $form)
 	{
 		$this->news->saveVar('news_visible', '1');
-		$this->form = null;
+		$this->resetForm();
 		return $this->message('msg_news_visible')->add($this->renderPage());
 	}
 	
 	public function onSubmit_invisible(GDT_Form $form)
 	{
 		$this->news->saveVar('news_visible', '0');
-		$this->form = null;
+		$this->resetForm();
 		return $this->message('msg_news_invisible')->add($this->renderPage());
 	}
 	
