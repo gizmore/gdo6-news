@@ -69,10 +69,7 @@ final class GDO_News extends GDO implements RSSItem
 	public function getCreatorID() { return $this->getVar('news_creator'); }
 	
 	### Perm ###
-	public function canEdit(GDO_User $user)
-	{
-		return true;
-	}
+	public function canEdit(GDO_User $user) { return $user->isStaff(); }
 	
 	public function href_edit() { return href('News', 'Write', '&id='.$this->getID()); }
 	
@@ -150,29 +147,10 @@ final class GDO_News extends GDO implements RSSItem
 	###############
 	### RSSItem ###
 	###############
-    public function getRSSTitle()
-    {
-        return $this->getTitle();
-    }
-
-    public function getRSSPubDate()
-    {
-        return $this->getValue('news_created');
-    }
-
-    public function getRSSGUID()
-    {
-        return $this->gdoHashcode();
-    }
-
-    public function getRSSLink()
-    {
-        return url('News', 'Comments', '&id='.$this->getID());
-    }
-
-    public function getRSSDescription()
-    {
-        return $this->getMessage();
-    }
+    public function getRSSTitle() { return $this->getTitle(); }
+    public function getRSSPubDate() { return $this->getValue('news_created'); }
+    public function getRSSGUID() { return $this->gdoHashcode(); }
+    public function getRSSLink() { return url('News', 'Comments', '&id='.$this->getID()); }
+    public function getRSSDescription() { return $this->getMessage(); }
 	
 }
