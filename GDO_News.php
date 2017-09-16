@@ -62,6 +62,8 @@ final class GDO_News extends GDO implements RSSItem
 	public function getSendDate() { return $this->getVar('news_send'); }
 	public function getSentDate() { return $this->getVar('news_sent'); }
 	public function getCreateDate() { return $this->getVar('news_created'); }
+	public function displayDay() { return tt($this->getCreateDate(), 'day'); }
+	
 	/**
 	 * @return GDO_User
 	 */
@@ -72,6 +74,7 @@ final class GDO_News extends GDO implements RSSItem
 	public function canEdit(GDO_User $user) { return $user->isStaff(); }
 	
 	public function href_edit() { return href('News', 'Write', '&id='.$this->getID()); }
+	public function href_view() { return href('News', 'View', '&id='.$this->getID()); }
 	
 	#############
 	### Texts ###

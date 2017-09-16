@@ -5,6 +5,7 @@ use GDO\Core\GDO_Module;
 use GDO\Template\GDT_Bar;
 use GDO\Type\GDT_Checkbox;
 use GDO\UI\GDT_Link;
+use GDO\Template\GDT_Template;
 
 final class Module_News extends GDO_Module
 {
@@ -30,12 +31,14 @@ final class Module_News extends GDO_Module
 	public function getConfig()
 	{
 		return array(
-			GDT_Checkbox::make('news_comments')->initial('1'),
-			GDT_Checkbox::make('news_guests')->initial('1'),
+		    GDT_Checkbox::make('news_blogbar')->initial('1'),
+		    GDT_Checkbox::make('news_comments')->initial('1'),
+		    GDT_Checkbox::make('news_guests')->initial('1'),
 			GDT_Checkbox::make('newsletter_guests')->initial('1'),
 			GDT_Checkbox::make('news_guest_comments')->initial('1'),
 		);
 	}
+	public function cfgBlogbar() { return $this->getConfigValue('news_blogbar'); }
 	public function cfgComments() { return $this->getConfigValue('news_comments'); }
 	public function cfgGuestNews() { return $this->getConfigValue('news_guests'); }
 	public function cfgGuestNewsletter() { return $this->getConfigValue('newsletter_guests'); }
@@ -53,8 +56,16 @@ final class Module_News extends GDO_Module
 	{
 	    return $this->templatePHP('admin_tabs.php');
 	}
-	
+
 	public function hookLeftBar(GDT_Bar $navbar)
+	{
+	    if ($this->cfgBlogbar())
+	    {
+	        $navbar->addField(GDT_Template::make()->template('News', 'blogbar.php', ['bar'=>$navbar]));
+	    }
+	}
+	
+	public function hookTopBar(GDT_Bar $navbar)
 	{
 	    $navbar->addFields(array(
     	    GDT_Link::make('link_news')->href(href('News', 'NewsList'))->label('link_news'),
