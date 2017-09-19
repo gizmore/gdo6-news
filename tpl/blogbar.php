@@ -27,7 +27,14 @@ while ($news = $table->fetch($result))
 printf('<div class="gdo-news-blogbar">');
 foreach ($categorized as $cat => $items)
 {
-    printf('<div class="gdo-category-title">%s</div>', GDO_Category::getById($cat)->displayName());
+    if ($category = GDO_Category::getById($cat))
+    {
+        printf('<div class="gdo-category-title">%s</div>', $category->displayName());
+    }
+    else
+    {
+        printf('<div class="gdo-category-title">%s</div>', t('cat_news'));
+    }
     printf('<ol>');
     foreach ($items as $news)
     {
