@@ -97,12 +97,7 @@ final class GDO_News extends GDO implements RSSItem
 		return $text->gdoColumn('newstext_message')->value($text->getMessage())->renderCell();
 	}
 
-	public function renderCard()
-	{
-	    return GDT_Template::templatePHP('News', 'card/gwf_news.php', ['gdo'=>$this]);
-	}
-	
-	
+	public function renderCard() { return GDT_Template::php('News', 'card/gwf_news.php', ['gdo'=>$this]); }
 	###################
 	### Translation ###
 	###################
