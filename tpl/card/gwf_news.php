@@ -1,13 +1,9 @@
-<?php
-use GDO\News\GDO_News;
+<?php /** @var $gdo \GDO\News\GDO_News **/
 use GDO\UI\GDT_Button;
 use GDO\UI\GDT_IconButton;
 use GDO\UI\GDT_Link;
 use GDO\User\GDO_User;
 
-$gdo instanceof GDO_News;
-?>
-<?php
 $user = GDO_User::current();
 $comments = $gdo->gdoCommentTable();
 ?>
@@ -33,7 +29,6 @@ if ($gdo->canEdit($user))
 }
 if ($gdo->gdoCommentsEnabled())
 {
-    
     $count = $gdo->getCommentCount();
     echo GDT_Link::make('link_comments')->label('link_comments', [$count])->icon('feedback')->href(href('News', 'Comments', '&id='.$gdo->getID()))->renderCell();
     if ($gdo->gdoCanComment($user))
@@ -43,5 +38,4 @@ if ($gdo->gdoCommentsEnabled())
 }
 ?>
   </md-card-actions>
-
 </md-card>

@@ -5,7 +5,7 @@ use GDO\User\GDO_User;
 $user = GDO_User::current();
 $module = Module_News::instance();
 
-echo $module->renderTabs();
+echo $module->renderTabs()->render();
 
 # List with cards
-echo $response->getHTML();
+echo $response->render();

@@ -1,6 +1,5 @@
 <?php
 namespace GDO\News\Method;
-
 use GDO\Admin\MethodAdmin;
 use GDO\Core\Website;
 use GDO\Date\Time;
@@ -19,19 +18,13 @@ use GDO\UI\GDT_Divider;
 use GDO\UI\GDT_Tab;
 use GDO\UI\GDT_Tabs;
 use GDO\Util\Common;
-
 /**
  * Write a news entry.
  * This is a bit more complex form with tabs for each edited language.
  * 
- * @see GDT_Tab
- * @see GDT_Tabs
- * @see News
- * @see GDT_Form
- * 
  * @author gizmore
- * @since 2.0
- * @version 5.0
+ * @since 3.00
+ * @version 6.05
  */
 final class Write extends MethodForm
 {
@@ -187,7 +180,6 @@ final class Write extends MethodForm
 	{
 		$this->news->saveVar('news_send', Time::getDate());
 		return $this->message('msg_news_queue')->add($this->renderPage());
-		
 	}
 	
 }

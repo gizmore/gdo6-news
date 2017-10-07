@@ -99,7 +99,7 @@ final class GDO_News extends GDO implements RSSItem
 
 	public function renderCard()
 	{
-	    return GDT_Template::responsePHP('News', 'card/gwf_news.php', ['gdo'=>$this]);
+	    return GDT_Template::templatePHP('News', 'card/gwf_news.php', ['gdo'=>$this]);
 	}
 	
 	
@@ -136,7 +136,7 @@ final class GDO_News extends GDO implements RSSItem
 	 */
 	public function getTexts()
 	{
-		if (!($cache = $this->tempGet('newstexts')))
+		if (null === ($cache = $this->tempGet('newstexts')))
 		{
 		    $query = GDO_NewsText::table()->select('newstext_lang, gdo_newstext.*');
 			$query->where("newstext_news=".$this->getID());

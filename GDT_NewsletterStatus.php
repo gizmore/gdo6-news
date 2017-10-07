@@ -1,11 +1,9 @@
 <?php
 namespace GDO\News;
-
 use GDO\Core\GDT_Template;
 use GDO\UI\GDT_Label;
 use GDO\User\GDO_User;
 use GDO\UI\WithIcon;
-
 final class GDT_NewsletterStatus extends GDT_Label
 {
     use WithIcon;
@@ -13,11 +11,6 @@ final class GDT_NewsletterStatus extends GDT_Label
 	public function renderCell()
 	{
 		return GDT_Template::php('News', 'cell/newsletter_status.php', ['field'=>$this]);
-	}
-	
-	public function renderForm()
-	{
-		return GDT_Template::php('News', 'form/newsletter_status.php', ['field'=>$this]);
 	}
 	
 	/**
