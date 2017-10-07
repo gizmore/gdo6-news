@@ -2,10 +2,10 @@
 namespace GDO\News;
 
 use GDO\Core\GDO_Module;
-use GDO\Template\GDT_Bar;
-use GDO\Type\GDT_Checkbox;
+use GDO\UI\GDT_Bar;
+use GDO\DB\GDT_Checkbox;
 use GDO\UI\GDT_Link;
-use GDO\Template\GDT_Template;
+use GDO\Core\GDT_Template;
 
 final class Module_News extends GDO_Module
 {

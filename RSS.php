@@ -2,7 +2,7 @@
 namespace GDO\News;
 
 use GDO\Language\Trans;
-use GDO\Template\GDT_Template;
+use GDO\Core\GDT_Template;
 use GDO\Net\GDT_Url;
 use GDO\Date\Time;
 
@@ -14,7 +14,7 @@ final class RSS
 	private $webURL;
 	private $feedURL;
 		
-	public static function displayDate(int $time=null)
+	public static function displayDate($time=null)
 	{
 	    return date('r', $time===null?time():$time);
 	}
@@ -24,7 +24,7 @@ final class RSS
 		return '<![CDATA['.htmlspecialchars($data).']]>';
 	}
 	
-	public function __construct(string $title, string $descr, array $items, string $webURL, string $feedURL)
+	public function __construct($title, $descr, array $items, $webURL, $feedURL)
 	{
 		$this->title = $title;
 		$this->descr = $descr;

@@ -10,8 +10,8 @@ use GDO\DB\GDT_CreatedAt;
 use GDO\DB\GDT_CreatedBy;
 use GDO\Date\GDT_DateTime;
 use GDO\Language\Trans;
-use GDO\Template\GDT_Template;
-use GDO\Type\GDT_Checkbox;
+use GDO\Core\GDT_Template;
+use GDO\DB\GDT_Checkbox;
 use GDO\User\GDO_User;
 /**
  * News database.
@@ -82,14 +82,14 @@ final class GDO_News extends GDO implements RSSItem
 	public function getTitle() { return $this->getTextVar('newstext_title'); }
 	public function getMessage() { return $this->getTextVar('newstext_message'); }
 
-	public function getTitleISO(string $iso) { return $this->getTextVarISO('newstext_title', $iso); }
-	public function getMessageISO(string $iso) { return $this->getTextVarISO('newstext_message', $iso); }
+	public function getTitleISO($iso) { return $this->getTextVarISO('newstext_title', $iso); }
+	public function getMessageISO($iso) { return $this->getTextVarISO('newstext_message', $iso); }
 	
-	public function getTextVar(string $key) { return $this->getText(Trans::$ISO)->getVar($key); }
-	public function getTextValue(string $key) { return $this->getText(Trans::$ISO)->getValue($key); }
+	public function getTextVar($key) { return $this->getText(Trans::$ISO)->getVar($key); }
+	public function getTextValue($key) { return $this->getText(Trans::$ISO)->getValue($key); }
 	
-	public function getTextVarISO(string $key, string $iso) { return $this->getText($iso)->getVar($key); }
-	public function getTextValueISO(string $key, string $iso) { return $this->getText($iso)->getValue($key); }
+	public function getTextVarISO($key, $iso) { return $this->getText($iso)->getVar($key); }
+	public function getTextValueISO($key, $iso) { return $this->getText($iso)->getValue($key); }
 	
 	public function displayMessage()
 	{
@@ -118,7 +118,7 @@ final class GDO_News extends GDO implements RSSItem
 	 * @param string $iso
 	 * @return GDO_NewsText
 	 */
-	public function getText(string $iso, bool $fallback=true)
+	public function getText($iso, $fallback=true)
 	{
 		$texts = $this->getTexts();
 		if (isset($texts[$iso]))

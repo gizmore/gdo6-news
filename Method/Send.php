@@ -1,7 +1,7 @@
 <?php
 namespace GDO\News\Method;
 
-use GDO\Cronjob\MethodCronjob;
+use GDO\Core\MethodCronjob;
 use GDO\Date\Time;
 use GDO\Mail\GDT_EmailFormat;
 use GDO\Mail\Mail;

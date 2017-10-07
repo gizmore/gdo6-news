@@ -6,8 +6,8 @@ use GDO\DB\GDT_CreatedAt;
 use GDO\DB\GDT_CreatedBy;
 use GDO\DB\GDT_Object;
 use GDO\Language\GDT_Language;
-use GDO\Type\GDT_Message;
-use GDO\Type\GDT_String;
+use GDO\UI\GDT_Message;
+use GDO\DB\GDT_String;
 
 final class GDO_NewsText extends GDO
 {

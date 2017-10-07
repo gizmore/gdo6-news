@@ -2,7 +2,7 @@
 namespace GDO\News\Method;
 
 use GDO\Form\GDT_AntiCSRF;
-use GDO\Form\GDT_Enum;
+use GDO\DB\GDT_Enum;
 use GDO\Form\GDT_Form;
 use GDO\Form\GDT_Submit;
 use GDO\Form\MethodForm;

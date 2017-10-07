@@ -1,5 +1,5 @@
 <?php
-use GDO\Template\GDT_Bar;
+use GDO\UI\GDT_Bar;
 use GDO\News\GDO_News;
 use GDO\Category\GDO_Category;
 $bar instanceof GDT_Bar;

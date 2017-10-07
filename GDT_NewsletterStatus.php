@@ -1,10 +1,10 @@
 <?php
 namespace GDO\News;
 
-use GDO\Template\GDT_Template;
+use GDO\Core\GDT_Template;
 use GDO\UI\GDT_Label;
 use GDO\User\GDO_User;
-use GDO\Form\WithIcon;
+use GDO\UI\WithIcon;
 
 final class GDT_NewsletterStatus extends GDT_Label
 {

@@ -6,7 +6,7 @@ use GDO\DB\GDT_AutoInc;
 use GDO\Language\GDT_Language;
 use GDO\Mail\GDT_Email;
 use GDO\Mail\GDT_EmailFormat;
-use GDO\Type\GDT_Int;
+use GDO\DB\GDT_Int;
 use GDO\User\GDT_User;
 use GDO\User\GDO_User;
 
@@ -32,13 +32,13 @@ final class GDO_Newsletter extends GDO
 		return self::gdoHashcodeS($this->getVars(['newsletter_id', 'newsletter_user', 'newsletter_email']));
 	}
 	
-	public static function getByEmail(string $email=null) { return self::getBy('newsletter_email', $email); }
+	public static function getByEmail($email=null) { return self::getBy('newsletter_email', $email); }
 	
 	public static function getByUser(GDO_User $user) { return self::getBy('newsletter_user', $user->getID()); }
 	
 	public static function hasSubscribed(GDO_User $user) { return !!self::getByUser($user); }
 	
-	public static function hasSubscribedMail(string $email=null) { return !!self::getByEmail($email); }
+	public static function hasSubscribedMail($email=null) { return !!self::getByEmail($email); }
 	
 	
 	/**
