@@ -1,6 +1,6 @@
 <?php
 namespace GDO\News\Method;
-use GDO\Admin\MethodAdmin;
+use GDO\Core\MethodAdmin;
 use GDO\Table\MethodQueryTable;
 use GDO\News\Module_News;
 use GDO\News\GDO_Newsletter;

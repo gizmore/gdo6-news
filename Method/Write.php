@@ -1,6 +1,6 @@
 <?php
 namespace GDO\News\Method;
-use GDO\Admin\MethodAdmin;
+use GDO\Core\MethodAdmin;
 use GDO\Core\Website;
 use GDO\Date\Time;
 use GDO\Form\GDT_AntiCSRF;
