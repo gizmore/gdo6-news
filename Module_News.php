@@ -31,7 +31,7 @@ final class Module_News extends GDO_Module
 	public function getConfig()
 	{
 		return array(
-		    GDT_Checkbox::make('news_blogbar')->initial('1'),
+		    GDT_Checkbox::make('news_blogbar')->initial('0'),
 		    GDT_Checkbox::make('news_comments')->initial('1'),
 		    GDT_Checkbox::make('news_guests')->initial('1'),
 			GDT_Checkbox::make('newsletter_guests')->initial('1'),

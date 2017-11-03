@@ -3,6 +3,7 @@ use GDO\UI\GDT_Button;
 use GDO\UI\GDT_IconButton;
 use GDO\UI\GDT_Link;
 use GDO\User\GDO_User;
+use GDO\UI\GDT_Menu;
 
 $user = GDO_User::current();
 $comments = $gdo->gdoCommentTable();
@@ -23,19 +24,21 @@ $comments = $gdo->gdoCommentTable();
   <gdo-div></gdo-div>
   <md-card-actions layout="row" layout-align="end center">
 <?php
+$menu = GDT_Menu::make();
 if ($gdo->canEdit($user))
 {
-	echo GDT_IconButton::make()->href(href('News', 'Write', '&id='.$gdo->getID()))->icon('edit')->renderCell(); 
+	$menu->addField(GDT_IconButton::make()->href(href('News', 'Write', '&id='.$gdo->getID()))->icon('edit'));
 }
 if ($gdo->gdoCommentsEnabled())
 {
     $count = $gdo->getCommentCount();
-    echo GDT_Link::make('link_comments')->label('link_comments', [$count])->icon('feedback')->href(href('News', 'Comments', '&id='.$gdo->getID()))->renderCell();
+    $menu->addField(GDT_Link::make('link_comments')->label('link_comments', [$count])->icon('feedback')->href(href('News', 'Comments', '&id='.$gdo->getID())));
     if ($gdo->gdoCanComment($user))
     {
-    	echo GDT_Button::make('btn_write_comment')->href(href('News', 'WriteComment', '&id='.$gdo->getID()))->icon('reply')->renderCell();
+    	$menu->addField(GDT_Button::make('btn_write_comment')->href(href('News', 'WriteComment', '&id='.$gdo->getID()))->icon('reply'));
     }
 }
+echo $menu->render();
 ?>
   </md-card-actions>
 </md-card>
