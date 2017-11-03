@@ -22,7 +22,7 @@ final class GDO_Newsletter extends GDO
 			GDT_Int::make('newsletter_news')->unsigned(), # Last received newsletter for cronjob via web state :P
 			GDT_User::make('newsletter_user')->unique(),
 			GDT_Email::make('newsletter_email')->unique(),
-			GDT_Language::make('newsletter_lang')->notNull(),
+			GDT_Language::make('newsletter_lang'),
 		    GDT_EmailFormat::make('newsletter_fmt')->notNull(),
 		);
 	}
