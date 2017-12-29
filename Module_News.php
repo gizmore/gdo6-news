@@ -6,6 +6,7 @@ use GDO\UI\GDT_Bar;
 use GDO\DB\GDT_Checkbox;
 use GDO\UI\GDT_Link;
 use GDO\Core\GDT_Template;
+use GDO\UI\GDT_Button;
 
 final class Module_News extends GDO_Module
 {
@@ -68,7 +69,7 @@ final class Module_News extends GDO_Module
 	public function hookTopBar(GDT_Bar $navbar)
 	{
 	    $navbar->addFields(array(
-    	    GDT_Link::make('link_news')->href(href('News', 'NewsList'))->label('link_news'),
+    	    GDT_Button::make('link_news')->href(href('News', 'NewsList'))->label('link_news'),
 	    ));
 	}
 }
