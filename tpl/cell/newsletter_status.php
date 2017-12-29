@@ -22,7 +22,7 @@ if ($user->isMember())
 }
 else
 {
-	$field->icon('priority_high');
+	$field->icon('alert');
 	$field->label('newsletter_sub_guest_unknown');
 }
 ?>
