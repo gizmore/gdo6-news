@@ -23,7 +23,7 @@ final class GDO_Newsletter extends GDO
 			GDT_User::make('newsletter_user')->unique(),
 			GDT_Email::make('newsletter_email')->unique(),
 			GDT_Language::make('newsletter_lang'),
-		    GDT_EmailFormat::make('newsletter_fmt')->notNull(),
+		    GDT_EmailFormat::make('newsletter_fmt'),
 		);
 	}
 	
