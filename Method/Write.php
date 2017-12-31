@@ -18,6 +18,7 @@ use GDO\UI\GDT_Divider;
 use GDO\UI\GDT_Tab;
 use GDO\UI\GDT_Tabs;
 use GDO\Util\Common;
+use GDO\UI\GDT_Title;
 /**
  * Write a news entry.
  * This is a bit more complex form with tabs for each edited language.
@@ -71,7 +72,7 @@ final class Write extends MethodForm
 
 			# 2 Fields
 			$primary = $iso === GWF_LANGUAGE;
-			$title = GDT_String::make("iso][$iso][newstext_title")->label('title')->notNull($primary);
+			$title = GDT_Title::make("iso][$iso][newstext_title")->label('title')->notNull($primary);
 			$message = GDT_Message::make("iso][$iso][newstext_message")->label('message')->notNull($primary);
 			if ($this->news)
 			{ # Old values
