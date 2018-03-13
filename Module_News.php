@@ -60,6 +60,9 @@ final class Module_News extends GDO_Module
 
 	public function hookLeftBar(GDT_Bar $navbar)
 	{
+	    $navbar->addFields(array(
+	    	GDT_Button::make('link_news')->href(href('News', 'NewsList'))->label('link_news'),
+	    ));
 	    if ($this->cfgBlogbar())
 	    {
 	        $navbar->addField(GDT_Template::make()->template('News', 'blogbar.php', ['bar'=>$navbar]));
@@ -68,8 +71,5 @@ final class Module_News extends GDO_Module
 	
 	public function hookTopBar(GDT_Bar $navbar)
 	{
-	    $navbar->addFields(array(
-    	    GDT_Button::make('link_news')->href(href('News', 'NewsList'))->label('link_news'),
-	    ));
 	}
 }

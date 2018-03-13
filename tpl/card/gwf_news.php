@@ -36,7 +36,7 @@ if ($gdo->canEdit($user))
 if ($gdo->gdoCommentsEnabled())
 {
     $count = $gdo->getCommentCount();
-    $card->actions()->addField(GDT_Link::make('link_comments')->label('link_comments', [$count])->icon('feedback')->href(href('News', 'Comments', '&id='.$gdo->getID())));
+    $card->actions()->addField(GDT_Link::make('link_comments')->label('link_comments', [$count])->icon('quote')->href(href('News', 'Comments', '&id='.$gdo->getID())));
     if ($gdo->gdoCanComment($user))
     {
     	$card->actions()->addField(GDT_Button::make('btn_write_comment')->href(href('News', 'WriteComment', '&id='.$gdo->getID()))->icon('reply'));
