@@ -5,7 +5,7 @@ use GDO\User\GDO_User;
 use GDO\UI\GDT_Card;
 use GDO\UI\GDT_HTML;
 
-$user = GDO_User::current();
+$user = $gdo->getCreator();
 $comments = $gdo->gdoCommentTable();
 
 $card = GDT_Card::make('news')->gdo($gdo);
@@ -21,7 +21,7 @@ $title=<<<EOT
 EOT;
 $card->title($title);
 
-$card->addField(GDT_HTML::withHTML("$titleText<br/>".$gdo->displayMessage()));
+$card->addField(GDT_HTML::withHTML("<h3>$titleText</h3><p>".$gdo->displayMessage().'</p>'));
 
 
 if ($gdo->canEdit($user))
