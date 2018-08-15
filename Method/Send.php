@@ -19,7 +19,7 @@ final class Send extends MethodCronjob
 {
 	public function run()
 	{
-	    $table = GDO_News::table();
+		$table = GDO_News::table();
 		$query = $table->select();
 		$query->where("news_send IS NOT NULL AND news_sent IS NULL");
 		$query->order('news_send');

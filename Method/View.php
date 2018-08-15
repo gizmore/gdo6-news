@@ -6,6 +6,6 @@ use GDO\Table\MethodQueryCard;
 
 final class View extends MethodQueryCard
 {
-    public function gdoTable() { return GDO_News::table(); }
+	public function gdoTable() { return GDO_News::table(); }
 	
 }

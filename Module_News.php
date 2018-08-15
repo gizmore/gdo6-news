@@ -19,11 +19,11 @@ final class Module_News extends GDO_Module
 	public function onLoadLanguage() { $this->loadLanguage('lang/news'); }
 	public function getClasses()
 	{
-	    return array(
-	        'GDO\News\GDO_News',
-	        'GDO\News\GDO_NewsText', 
-	        'GDO\News\GDO_NewsComments',
-    	    'GDO\News\GDO_Newsletter');
+		return array(
+			'GDO\News\GDO_News',
+			'GDO\News\GDO_NewsText', 
+			'GDO\News\GDO_NewsComments',
+			'GDO\News\GDO_Newsletter');
 	}
 
 	##############
@@ -32,9 +32,9 @@ final class Module_News extends GDO_Module
 	public function getConfig()
 	{
 		return array(
-		    GDT_Checkbox::make('news_blogbar')->initial('0'),
-		    GDT_Checkbox::make('news_comments')->initial('1'),
-		    GDT_Checkbox::make('news_guests')->initial('1'),
+			GDT_Checkbox::make('news_blogbar')->initial('0'),
+			GDT_Checkbox::make('news_comments')->initial('1'),
+			GDT_Checkbox::make('news_guests')->initial('1'),
 			GDT_Checkbox::make('newsletter_guests')->initial('1'),
 			GDT_Checkbox::make('news_guest_comments')->initial('1'),
 		);
@@ -50,23 +50,23 @@ final class Module_News extends GDO_Module
 	############
 	public function renderTabs()
 	{
-	    return $this->responsePHP('tabs.php');
+		return $this->responsePHP('tabs.php');
 	}
 	
 	public function renderAdminTabs()
 	{
-	    return $this->responsePHP('admin_tabs.php');
+		return $this->responsePHP('admin_tabs.php');
 	}
 
 	public function hookLeftBar(GDT_Bar $navbar)
 	{
-	    $navbar->addFields(array(
-	    	GDT_Link::make('link_news')->href(href('News', 'NewsList'))->label('link_news'),
-	    ));
-	    if ($this->cfgBlogbar())
-	    {
-	        $navbar->addField(GDT_Template::make()->template('News', 'blogbar.php', ['bar'=>$navbar]));
-	    }
+		$navbar->addFields(array(
+			GDT_Link::make('link_news')->href(href('News', 'NewsList'))->label('link_news'),
+		));
+		if ($this->cfgBlogbar())
+		{
+			$navbar->addField(GDT_Template::make()->template('News', 'blogbar.php', ['bar'=>$navbar]));
+		}
 	}
 	
 	public function hookTopBar(GDT_Bar $navbar)

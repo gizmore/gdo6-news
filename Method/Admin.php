@@ -22,7 +22,7 @@ final class Admin extends MethodQueryTable
 	
 	public function getQuery()
 	{
-	    return GDO_News::table()->select();
+		return GDO_News::table()->select();
 	}
 	
 	public function execute()

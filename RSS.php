@@ -16,7 +16,7 @@ final class RSS
 		
 	public static function displayDate($time=null)
 	{
-	    return date('r', $time===null?time():$time);
+		return date('r', $time===null?time():$time);
 	}
 	
 	public static function displayCData($data)

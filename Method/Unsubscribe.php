@@ -16,7 +16,7 @@ final class Unsubscribe extends Method
 	
 	public function execute()
 	{
-	    if ( (!($newsletter = GDO_Newsletter::getById(Common::getRequestString('id')))) ||
+		if ( (!($newsletter = GDO_Newsletter::getById(Common::getRequestString('id')))) ||
 			 ($newsletter->gdoHashcode() !== Common::getRequestString('token')) )
 		{
 			return $this->error('err_newsletter_not_subscribed');

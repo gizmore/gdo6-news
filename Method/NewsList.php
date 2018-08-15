@@ -8,7 +8,7 @@ use GDO\Table\MethodQueryCards;
 
 class NewsList extends MethodQueryCards
 {
-    public function gdoTable() { return GDO_News::table(); }
+	public function gdoTable() { return GDO_News::table(); }
 	
 	public function isGuestAllowed() { return Module_News::instance()->cfgGuestNews(); }
 	

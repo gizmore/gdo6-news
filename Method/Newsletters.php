@@ -18,14 +18,14 @@ final class Newsletters extends MethodQueryTable
 	
 	public function getQuery()
 	{
-	    return GDO_Newsletter::table()->select();
+		return GDO_Newsletter::table()->select();
 	}
 	
 	public function execute()
 	{
-	    return $this->renderNavBar('News')->
-	    add(Module_News::instance()->renderAdminTabs())->
-	    add(parent::execute());
+		return $this->renderNavBar('News')->
+		add(Module_News::instance()->renderAdminTabs())->
+		add(parent::execute());
 	}
 	
 }

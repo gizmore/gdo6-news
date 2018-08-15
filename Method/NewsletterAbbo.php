@@ -35,8 +35,8 @@ final class NewsletterAbbo extends MethodForm
 	
 	public function execute()
 	{
-	    $tabs = Module_News::instance()->renderTabs();
-	    return $tabs->add($this->templateNewsletter());
+		$tabs = Module_News::instance()->renderTabs();
+		return $tabs->add($this->templateNewsletter());
 	}
 	
 	public function templateNewsletter()
@@ -57,9 +57,9 @@ final class NewsletterAbbo extends MethodForm
 		$form->addFields(array(
 			GDT_NewsletterStatus::make('status')->gdo($user),
 			GDT_Enum::make('yn')->enumValues('yes', 'no')->initial($subscribed?'yes':'no')->label('newsletter_subscribed')->writable($mem),
-		    GDT_EmailFormat::make('newsletter_fmt')->initial($mem?$user->getMailFormat():GDT_EmailFormat::HTML)->writable(!$mem),
-		    GDT_Language::make('newsletter_lang')->initial($mem?$user->getLangISO():Trans::$ISO)->writable(!$mem),
-		    GDT_Email::make('newsletter_email')->initial($user->getMail())->writable(!$mem),
+			GDT_EmailFormat::make('newsletter_fmt')->initial($mem?$user->getMailFormat():GDT_EmailFormat::HTML)->writable(!$mem),
+			GDT_Language::make('newsletter_lang')->initial($mem?$user->getLangISO():Trans::$ISO)->writable(!$mem),
+			GDT_Email::make('newsletter_email')->initial($user->getMail())->writable(!$mem),
 			GDT_Submit::make(),
 			GDT_AntiCSRF::make(),
 		));
@@ -86,7 +86,7 @@ final class NewsletterAbbo extends MethodForm
 			}
 			elseif (null === ($email = $form->getFormVar('newsletter_email')))
 			{
-			    return $this->error('err_newsletter_no_email');
+				return $this->error('err_newsletter_no_email');
 			}
 			elseif (GDO_Newsletter::hasSubscribedMail($email))
 			{
@@ -105,7 +105,7 @@ final class NewsletterAbbo extends MethodForm
 		}
 		else
 		{
-		    GDO_Newsletter::table()->deleteWhere('newsletter_user='.$user->getID())->exec();
+			GDO_Newsletter::table()->deleteWhere('newsletter_user='.$user->getID())->exec();
 			return $this->message('msg_newsletter_unsubscribed');
 		}
 	}

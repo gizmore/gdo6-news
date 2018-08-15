@@ -37,7 +37,7 @@ final class GDO_News extends GDO implements RSSItem
 	{
 		return array(
 			GDT_AutoInc::make('news_id'),
-		    GDT_Category::make('news_category')->emptyInitial(t('no_category')),
+			GDT_Category::make('news_category')->emptyInitial(t('no_category')),
 			GDT_Checkbox::make('news_visible')->notNull()->initial('0'),
 			GDT_DateTime::make('news_send')->label('news_sending'), # is in queue? (sending)
 			GDT_DateTime::make('news_sent')->label('news_sent'), # is out of queue? (sent)
@@ -133,7 +133,7 @@ final class GDO_News extends GDO implements RSSItem
 	{
 		if (null === ($cache = $this->tempGet('newstexts')))
 		{
-		    $query = GDO_NewsText::table()->select('newstext_lang, gdo_newstext.*');
+			$query = GDO_NewsText::table()->select('newstext_lang, gdo_newstext.*');
 			$query->where("newstext_news=".$this->getID());
 			$cache = $query->exec()->fetchAllArrayAssoc2dObject();
 			$this->tempSet('newstexts', $cache);
@@ -145,10 +145,10 @@ final class GDO_News extends GDO implements RSSItem
 	###############
 	### RSSItem ###
 	###############
-    public function getRSSTitle() { return $this->getTitle(); }
-    public function getRSSPubDate() { return $this->getValue('news_created'); }
-    public function getRSSGUID() { return $this->gdoHashcode(); }
-    public function getRSSLink() { return url('News', 'Comments', '&id='.$this->getID()); }
-    public function getRSSDescription() { return $this->getMessage(); }
+	public function getRSSTitle() { return $this->getTitle(); }
+	public function getRSSPubDate() { return $this->getValue('news_created'); }
+	public function getRSSGUID() { return $this->gdoHashcode(); }
+	public function getRSSLink() { return url('News', 'Comments', '&id='.$this->getID()); }
+	public function getRSSDescription() { return $this->getMessage(); }
 	
 }

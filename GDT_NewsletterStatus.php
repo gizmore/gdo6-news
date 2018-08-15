@@ -6,8 +6,8 @@ use GDO\User\GDO_User;
 use GDO\UI\WithIcon;
 final class GDT_NewsletterStatus extends GDT_Label
 {
-    use WithIcon;
-    
+	use WithIcon;
+	
 	public function renderCell()
 	{
 		return GDT_Template::php('News', 'cell/newsletter_status.php', ['field'=>$this]);

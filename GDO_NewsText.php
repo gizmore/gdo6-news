@@ -16,7 +16,7 @@ final class GDO_NewsText extends GDO
 	public function gdoColumns()
 	{
 		return array(
-		    GDT_Object::make('newstext_news')->table(GDO_News::table())->primary(),
+			GDT_Object::make('newstext_news')->table(GDO_News::table())->primary(),
 			GDT_Language::make('newstext_lang')->primary(),
 			GDT_Title::make('newstext_title')->notNull(),
 			GDT_Message::make('newstext_message')->notNull(),

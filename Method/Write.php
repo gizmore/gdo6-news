@@ -42,7 +42,7 @@ final class Write extends MethodForm
 	{
 		if ($id = Common::getRequestString('id'))
 		{
-		    $this->news = GDO_News::table()->find($id);
+			$this->news = GDO_News::table()->find($id);
 		}
 	}
 	
@@ -55,7 +55,7 @@ final class Write extends MethodForm
 	
 	public function createForm(GDT_Form $form)
 	{
-	    $news = GDO_News::table();
+		$news = GDO_News::table();
 		
 		# Category select
 		$form->addFields(array(
@@ -124,7 +124,7 @@ final class Write extends MethodForm
 	public function formValidated(GDT_Form $form)
 	{
 		# Update news
-	    $news = $this->news ? $this->news : GDO_News::blank();
+		$news = $this->news ? $this->news : GDO_News::blank();
 		$news->setVars($form->getField('news_category')->getGDOData());
 		$news->replace();
 
@@ -135,7 +135,7 @@ final class Write extends MethodForm
 			$message = trim($data['newstext_message']);
 			if ($title || $message)
 			{
-			    $text = GDO_NewsText::blank(array(
+				$text = GDO_NewsText::blank(array(
 					'newstext_news' => $news->getID(),
 					'newstext_lang' => $iso,
 					'newstext_title' => $title,
