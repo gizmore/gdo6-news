@@ -19,4 +19,4 @@ elseif ($news->isSending())
 $field->icon($icon);
 $field->label($lbl);
 ?>
-<div class="gdo-label"><?= $field->htmlIcon() . ' ' . $field->label; ?></div>
+<div class="gdo-label"><?= $field->htmlIcon() . ' ' . $field->displayLabel(); ?></div>

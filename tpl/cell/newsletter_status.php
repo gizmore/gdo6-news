@@ -26,4 +26,4 @@ else
 	$field->label('newsletter_sub_guest_unknown');
 }
 ?>
-<div class="gdo-label"><?= $field->htmlIcon() . ' ' . $field->label; ?></div>
+<div class="gdo-label"><?= $field->htmlIcon() . ' ' . $field->displayLabel(); ?></div>
