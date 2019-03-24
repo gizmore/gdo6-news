@@ -1,13 +1,13 @@
 <?php
 namespace GDO\News\Method;
 
-use GDO\Core\MethodCronjob;
 use GDO\Date\Time;
 use GDO\Mail\GDT_EmailFormat;
 use GDO\Mail\Mail;
 use GDO\News\GDO_News;
 use GDO\UI\GDT_Link;
 use GDO\News\GDO_Newsletter;
+use GDO\Cronjob\MethodCronjob;
 
 /**
  * Send newsletter via cronjob.
