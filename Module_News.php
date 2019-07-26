@@ -6,17 +6,15 @@ use GDO\UI\GDT_Bar;
 use GDO\DB\GDT_Checkbox;
 use GDO\UI\GDT_Link;
 use GDO\Core\GDT_Template;
-use GDO\UI\GDT_Button;
 
 final class Module_News extends GDO_Module
 {
-	public $module_version = "6.01";
-	
 	##############
 	### Module ###
 	##############
 	public function href_administrate_module() { return href('News', 'Admin'); }
 	public function onLoadLanguage() { $this->loadLanguage('lang/news'); }
+	public function getDependencies() { return ['Comment', 'Category']; }
 	public function getClasses()
 	{
 		return array(
