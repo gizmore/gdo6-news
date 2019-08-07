@@ -7,7 +7,7 @@ return array(
 'link_newsletter' => 'Newsletter',
 'link_newsletters' => 'Newsletters',
 ##################################################
-'newsfeed_title' => '[%s] Newsfeed',
+'newsfeed_title' => 'Newsfeed',
 'newsfeed_descr' => 'General newsfeed of %s',
 ##################################################
 'news_comments' => 'Allow news comments?',
@@ -15,13 +15,13 @@ return array(
 'newsletter_guests' => 'Public newsletter?',
 'news_guest_comments' => 'Allow Guest comments?',
 ##################################################
-'list_newslist' => '[%s] News',
+'list_newslist' => 'News',
 ##################################################
 'newsletter_news' => 'NewsID',
 ##################################################
-'list_news_comments' => '[%s] News Comments',
+'list_news_comments' => 'News Comments',
 ##################################################
-'ft_news_write' => '[%s] Write News',
+'ft_news_write' => 'Write News',
 'div_texts' => 'News Texts',
 'msg_news_created' => 'The news item has been created, but it´s still not visible.',
 'msg_news_edited' => 'The news item has been edited.',
@@ -30,11 +30,11 @@ return array(
 'newsletter_status_waiting' => 'The news item has not been put in the mail queue yet.',
 'newsletter_status_in_queue' => 'The news item is in the mail queue.',
 ##################################################
-'ft_news_writecomment' => '[%s] Write News Comment',
+'ft_news_writecomment' => 'Write News Comment',
 ##################################################
-'list_news_admin' => '[%s] News (Admin)',
+'list_news_admin' => 'News (Admin)',
 ##################################################
-'ft_news_newsletterabbo' => '[%s] Newsletter Subscription',
+'ft_news_newsletterabbo' => 'Newsletter Subscription',
 'newsletter_subscribed' => 'I want to subscribe to the newsletter.',
 'newsletter_sub_guest_unknown' => 'For guests, the newsletter status cannot be determined.',
 'newsletter_info_subscribed' => 'You have subscribed to the newsletter. Check your %s to configure your newsletter options.',
