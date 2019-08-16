@@ -91,7 +91,7 @@ final class Write extends MethodForm
 		
 		# Buttons
 		$form->addFields(array(
-			GDT_Submit::make(),
+			GDT_Submit::make()->label('btn_save'),
 			GDT_AntiCSRF::make(),
 		));
 		
@@ -99,19 +99,19 @@ final class Write extends MethodForm
 		if ($this->news)
 		{
 			$form->addFields(array(
-				GDT_Submit::make('preview'),
+				GDT_Submit::make('preview')->label('btn_preview'),
 			));
 			
 			if (!$this->news->isVisible())
 			{
-				$form->addField(GDT_Submit::make('visible'));
+				$form->addField(GDT_Submit::make('visible')->label('btn_visible'));
 			}
 			else
 			{
-				$form->addField(GDT_Submit::make('invisible'));
+				$form->addField(GDT_Submit::make('invisible')->label('btn_invisible'));
 				if (!$this->news->isSent())
 				{
-					$form->addField(GDT_Submit::make('send'));
+					$form->addField(GDT_Submit::make('send')->label('btn_send_mail'));
 				}
 			}
 			
