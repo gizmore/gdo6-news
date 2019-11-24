@@ -1,5 +1,6 @@
 <?php
 use GDO\News\GDT_NewsStatus;
+use GDO\UI\GDT_Panel;
 $field instanceof GDT_NewsStatus;
 ?>
 <?php $news = $field->getNews(); ?>
@@ -18,5 +19,5 @@ elseif ($news->isSending())
 }
 $field->icon($icon);
 $field->label($lbl);
-?>
-<div class="gdo-label"><?= $field->htmlIcon() . ' ' . $field->displayLabel(); ?></div>
+
+echo GDT_Panel::withHTML($field->htmlIcon() . ' ' . $field->displayLabel())->renderCell();
