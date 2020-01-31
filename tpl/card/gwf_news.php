@@ -1,27 +1,28 @@
 <?php /** @var $gdo \GDO\News\GDO_News **/
-use GDO\Profile\GDT_ProfileLink;
 use GDO\UI\GDT_Button;
-use GDO\User\GDO_User;
 use GDO\UI\GDT_Card;
 use GDO\UI\GDT_HTML;
 
 $user = $gdo->getCreator();
-$comments = $gdo->gdoCommentTable();
+// $comments = $gdo->gdoCommentTable();
 
 $card = GDT_Card::make('news')->gdo($gdo);
 
-$avatar = GDT_ProfileLink::make()->forUser($user)->withNickname()->render();
-$date = tt($gdo->getCreateDate());
-$titleText = $gdo->getTitle();
-$title=<<<EOT
-<div>
-<div>{$avatar}</div>
-<div>{$date}</div>
-</div>
-EOT;
-$card->title($title);
+$card->withCreator();
+$card->withCreated();
 
-$card->addField(GDT_HTML::withHTML("<h3>$titleText</h3><p>".$gdo->displayMessage().'</p>'));
+// $avatar = GDT_ProfileLink::make()->forUser($user)->withNickname()->render();
+// $date = tt($gdo->getCreateDate());
+// $titleText = $gdo->getTitle();
+// $title=<<<EOT
+// <div>
+// <div>{$avatar}</div>
+// <div>{$date}</div>
+// </div>
+// EOT;
+$card->title($gdo->getTitle());
+
+$card->addField(GDT_HTML::withHTML($gdo->displayMessage()));
 
 
 if ($gdo->canEdit($user))

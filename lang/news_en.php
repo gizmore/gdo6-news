@@ -66,4 +66,10 @@ Author: %s
 
 Kind Regards
 The %2$s Team',
+#####################################################
+'cfg_news_blogbar' => 'Enable news as blog sidebar?',
+'cfg_news_comments' => 'Enable comments engine for news?',
+'cfg_news_guests' => 'Allow guests to read news?',
+'cfg_newsletter_guests' => 'Allow newsletter for guests?',
+'cfg_news_guest_comments' => 'Allow guests to comment?',
 );
