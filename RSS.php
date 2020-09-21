@@ -2,6 +2,7 @@
 namespace GDO\News;
 
 use GDO\Language\Trans;
+use GDO\Core\Application;
 use GDO\Core\GDT_Template;
 use GDO\Net\GDT_Url;
 use GDO\Date\Time;
@@ -16,7 +17,7 @@ final class RSS
 		
 	public static function displayDate($time=null)
 	{
-		return date('r', $time===null?time():$time);
+	    return date('r', $time===null ? Application::$TIME : $time);
 	}
 	
 	public static function displayCData($data)
