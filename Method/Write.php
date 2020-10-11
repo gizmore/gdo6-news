@@ -158,8 +158,11 @@ final class Write extends MethodForm
 	
 	public function onSubmit_visible(GDT_Form $form)
 	{
-		$this->news->saveVar('news_visible', '1');
-		$this->resetForm();
+	    $this->news->saveVars(array(
+	        'news_visible' => '1',
+            'news_created' => Time::getDate(),
+	    ));
+	    $this->resetForm();
 		return $this->message('msg_news_visible')->add($this->renderPage());
 	}
 	

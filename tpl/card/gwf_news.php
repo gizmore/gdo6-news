@@ -4,26 +4,15 @@ use GDO\UI\GDT_Card;
 use GDO\UI\GDT_HTML;
 
 $user = $gdo->getCreator();
-// $comments = $gdo->gdoCommentTable();
 
 $card = GDT_Card::make('news')->gdo($gdo);
 
 $card->withCreator();
 $card->withCreated();
 
-// $avatar = GDT_ProfileLink::make()->forUser($user)->withNickname()->render();
-// $date = tt($gdo->getCreateDate());
-// $titleText = $gdo->getTitle();
-// $title=<<<EOT
-// <div>
-// <div>{$avatar}</div>
-// <div>{$date}</div>
-// </div>
-// EOT;
 $card->title($gdo->getTitle());
 
 $card->addField(GDT_HTML::withHTML($gdo->displayMessage()));
-
 
 if ($gdo->canEdit($user))
 {

@@ -52,6 +52,7 @@ final class GDO_News extends GDO implements RSSItem
 	public function getID() { return $this->getVar('news_id'); }
 	public function isSent() { return $this->getSentDate() !== null; }
 	public function isSending() { return ($this->getSentDate() === null) && ($this->getSendDate() !== null); }
+	public function displayName() { return $this->getTitle(); }
 	
 	/**
 	 * @return GDO_Category

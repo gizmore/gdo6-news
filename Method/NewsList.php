@@ -20,7 +20,7 @@ class NewsList extends MethodQueryCards
 	
 	public function filterNewsQuery(Query $query)
 	{
-		return $query->where('news_visible');
+		return $query->where('news_visible')->orderDESC('news_created');
 	}
 	
 	public function execute()
