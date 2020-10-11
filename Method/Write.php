@@ -129,7 +129,7 @@ final class Write extends MethodForm
 		$news->replace();
 
 		# Update texts
-		foreach ($_POST['form']['iso'] as $iso => $data)
+		foreach ($_POST[$form->name]['iso'] as $iso => $data)
 		{
 			$title = trim($data['newstext_title']);
 			$message = trim($data['newstext_message']);
