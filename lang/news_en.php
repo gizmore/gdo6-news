@@ -72,4 +72,7 @@ The %2$s Team',
 'cfg_news_guests' => 'Allow guests to read news?',
 'cfg_newsletter_guests' => 'Allow newsletter for guests?',
 'cfg_news_guest_comments' => 'Allow guests to comment?',
+'news_visible' => 'Visible',
+'news_sending' => 'In Queue?',
+'news_sent' => 'Sent', 
 );

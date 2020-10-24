@@ -78,8 +78,8 @@ final class Write extends MethodForm
 			{ # Old values
 				if ($text = $this->news->getText($iso, false))
 				{
-					$title->val($text->getTitle());
-					$message->val($text->getMessage());
+					$title->var($text->getTitle());
+					$message->var($text->getMessage());
 				}
 			}
 			# Add

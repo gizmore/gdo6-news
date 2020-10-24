@@ -67,9 +67,12 @@ Verfasser: %s
 Viele Grüße
 Das %2$s Team',
 #####################################################
-'cfg_news_blogbar' => 'Enable news as blog sidebar?',
-'cfg_news_comments' => 'Enable comments engine for news?',
-'cfg_news_guests' => 'Allow guests to read news?',
-'cfg_newsletter_guests' => 'Allow newsletter for guests?',
-'cfg_news_guest_comments' => 'Allow guests to comment?',
+'cfg_news_blogbar' => 'News als Blog-Sidebar anzeigen?',
+'cfg_news_comments' => 'Kommentare erlauben?',
+'cfg_news_guests' => 'Dürfen Gäste die News lesen?',
+'cfg_newsletter_guests' => 'Dürfen Gäste den Newsletter abbonieren?',
+'cfg_news_guest_comments' => 'Dürfen Gäste kommentieren?',
+'news_visible' => 'Sichtbar',
+'news_sending' => 'Im Queue?',
+'news_sent' => 'Gesendet',
 );
