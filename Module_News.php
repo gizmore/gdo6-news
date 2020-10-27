@@ -9,6 +9,8 @@ use GDO\Core\GDT_Template;
 
 final class Module_News extends GDO_Module
 {
+    public $module_priority = 20;
+    
 	##############
 	### Module ###
 	##############
