@@ -46,11 +46,10 @@ final class Write extends MethodForm
 		}
 	}
 	
-	public function execute()
+	public function beforeExecute()
 	{
-		$response = parent::execute();
-		$newstabs = Module_News::instance()->renderAdminTabs();
-		return $this->renderNavBar('News')->add($newstabs)->add($response);
+		$this->renderNavBar('News');
+		Module_News::instance()->renderAdminTabs();
 	}
 	
 	public function createForm(GDT_Form $form)

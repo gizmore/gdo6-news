@@ -6,6 +6,8 @@ use GDO\UI\GDT_Bar;
 use GDO\DB\GDT_Checkbox;
 use GDO\UI\GDT_Link;
 use GDO\Core\GDT_Template;
+use GDO\UI\GDT_Page;
+use GDO\UI\GDT_HTML;
 
 final class Module_News extends GDO_Module
 {
@@ -55,13 +57,13 @@ final class Module_News extends GDO_Module
 	
 	public function renderAdminTabs()
 	{
-		return $this->responsePHP('admin_tabs.php');
+		GDT_Page::$INSTANCE->topTabs->addField(GDT_HTML::withHTML($this->templatePHP('admin_tabs.php')));
 	}
 
 	public function hookLeftBar(GDT_Bar $navbar)
 	{
 		$navbar->addFields(array(
-			GDT_Link::make('link_news')->href(href('News', 'NewsList'))->label('link_news'),
+			GDT_Link::make('link_news')->href(href('News', 'NewsList')),
 		));
 		if ($this->cfgBlogbar())
 		{
