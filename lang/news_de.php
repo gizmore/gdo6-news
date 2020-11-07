@@ -15,7 +15,7 @@ return array(
 'newsletter_guests' => 'Newsletter für Gäste?',
 'news_guest_comments' => 'Erlaube Gast Kommentare?',
 ##################################################
-'list_newslist' => 'News',
+'list_news_newslist' => 'News',
 ##################################################
 'newsletter_news' => 'NewsID',
 ##################################################

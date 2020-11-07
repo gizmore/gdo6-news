@@ -2,15 +2,15 @@
 use GDO\UI\GDT_Button;
 use GDO\UI\GDT_Card;
 use GDO\UI\GDT_HTML;
+use GDO\UI\GDT_Label;
 
 $user = $gdo->getCreator();
 
 $card = GDT_Card::make('news')->gdo($gdo);
 
-$card->withCreator();
-$card->withCreated();
+$card->creatorHeader();
 
-$card->title($gdo->getTitle());
+$card->title(GDT_Label::make()->rawLabel($gdo->getTitle()));
 
 $card->addField(GDT_HTML::withHTML($gdo->displayMessage()));
 
