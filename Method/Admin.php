@@ -25,13 +25,10 @@ final class Admin extends MethodQueryTable
 		return GDO_News::table()->select();
 	}
 	
-	public function execute()
+	public function beforeExecute()
 	{
-		return $this->renderNavBar('News')->add(Module_News::instance()->renderAdminTabs())->add(parent::execute());
+	    parent::beforeExecute();
+	    Module_News::instance()->renderAdminTabs();
 	}
-	
-// 	public function filterNewsQuery(Query $query)
-// 	{
-// 		return $query;
-// 	}
+
 }

@@ -1,13 +1,15 @@
 <?php
 namespace GDO\News\Method;
+
 use GDO\Core\MethodAdmin;
 use GDO\Table\MethodQueryTable;
 use GDO\News\Module_News;
 use GDO\News\GDO_Newsletter;
+
 /**
  * Table of newsletter subscriptions.
  * @author gizmore
- * @version 6.0
+ * @version 6.10
  * @since 6.0
  */
 final class Newsletters extends MethodQueryTable
@@ -21,11 +23,10 @@ final class Newsletters extends MethodQueryTable
 		return GDO_Newsletter::table()->select();
 	}
 	
-	public function execute()
+	public function beforeExecute()
 	{
-		return $this->renderNavBar('News')->
-		add(Module_News::instance()->renderAdminTabs())->
-		add(parent::execute());
+	    parent::beforeExecute();
+	    Module_News::instance()->renderAdminTabs();
 	}
 	
 }
