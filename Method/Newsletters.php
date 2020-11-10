@@ -25,7 +25,7 @@ final class Newsletters extends MethodQueryTable
 	
 	public function beforeExecute()
 	{
-	    parent::beforeExecute();
+	    $this->renderNavBar();
 	    Module_News::instance()->renderAdminTabs();
 	}
 	
