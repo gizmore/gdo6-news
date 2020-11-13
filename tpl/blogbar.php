@@ -2,12 +2,12 @@
 use GDO\UI\GDT_Bar;
 use GDO\News\GDO_News;
 use GDO\Category\GDO_Category;
-$bar instanceof GDT_Bar;
+/** @var $bar GDT_Bar **/
 
 $table = GDO_News::table();
 $query = $table->select()->order('news_created', 0);
 $result = $query->exec();
-$nocat = [];
+// $nocat = [];
 $categorized = [];
 
 while ($news = $table->fetch($result))
@@ -43,5 +43,3 @@ foreach ($categorized as $cat => $items)
 	printf('</ol>');
 }
 printf('</div>');
-
-
