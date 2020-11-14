@@ -18,10 +18,7 @@ final class Newsletters extends MethodQueryTable
 	
 	public function getPermission() { return 'staff'; }
 	
-	public function getQuery()
-	{
-		return GDO_Newsletter::table()->select();
-	}
+	public function gdoTable() { return GDO_Newsletter::table(); }
 	
 	public function beforeExecute()
 	{

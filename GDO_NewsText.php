@@ -19,7 +19,7 @@ final class GDO_NewsText extends GDO
 			GDT_Object::make('newstext_news')->table(GDO_News::table())->primary(),
 			GDT_Language::make('newstext_lang')->primary(),
 			GDT_Title::make('newstext_title')->notNull()->max(255),
-			GDT_Message::make('newstext_message')->notNull(),
+			GDT_Message::make('newstext_message'),
 			GDT_CreatedAt::make('newstext_created'),
 			GDT_CreatedBy::make('newstext_creator'),
 		);

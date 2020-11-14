@@ -12,9 +12,9 @@ class NewsList extends MethodQueryCards
 	
 	public function isGuestAllowed() { return Module_News::instance()->cfgGuestNews(); }
 	
-	public function gdoQuery()
+	public function getQuery()
 	{
-		$query = parent::gdoQuery();
+		$query = parent::getQuery();
 		return $this->filterNewsQuery($query);
 	}
 	

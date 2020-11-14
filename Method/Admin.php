@@ -7,22 +7,24 @@ use GDO\News\GDO_News;
 use GDO\Table\MethodQueryTable;
 use GDO\UI\GDT_EditButton;
 
+/**
+ * Overview of news entries.
+ * @author gizmore
+ * @version 6.10
+ */
 final class Admin extends MethodQueryTable
 {
 	use MethodAdmin;
 	
+	public function gdoTable() { return GDO_News::table(); }
+	
 	public function getPermission() { return 'staff'; }
 	
-	public function getHeaders()
+	public function gdoHeaders()
 	{
 		return array_merge(array(
 			GDT_EditButton::make(),
-		), parent::getHeaders());
-	}
-	
-	public function getQuery()
-	{
-		return GDO_News::table()->select();
+		), parent::gdoHeaders());
 	}
 	
 	public function beforeExecute()

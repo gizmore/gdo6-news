@@ -65,7 +65,7 @@ final class Module_News extends GDO_Module
 	
 	public function renderAdminTabs()
 	{
-		GDT_Page::$INSTANCE->topTabs->addField(GDT_HTML::withHTML($this->templatePHP('admin_tabs.php')));
+		GDT_Page::$INSTANCE->topTabs->addField(GDT_Template::make()->template('News', 'admin_tabs.php'));
 	}
 	
 	public function onInitSidebar()
@@ -73,7 +73,7 @@ final class Module_News extends GDO_Module
 // 	    if ($this->cfgLeftBar())
 	    {
     	    GDT_Page::$INSTANCE->leftNav->addField(
-    	        GDT_Link::make('link_news')->href(href('News', 'List')));
+    	        GDT_Link::make('link_news')->href(href('News', 'NewsList')));
 	    }
 	    if ($this->cfgBlogbar())
 	    {

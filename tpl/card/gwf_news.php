@@ -10,7 +10,7 @@ $card = GDT_Card::make('news')->gdo($gdo);
 
 $card->creatorHeader();
 
-$card->title(GDT_Label::make()->rawLabel($gdo->getTitle()));
+$card->title(GDT_Label::make()->labelRaw($gdo->getTitle()));
 
 $card->addField(GDT_HTML::withHTML($gdo->displayMessage()));
 

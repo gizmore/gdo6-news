@@ -1,5 +1,6 @@
 <?php
 namespace GDO\News\Method;
+
 use GDO\Core\MethodAdmin;
 use GDO\Core\Website;
 use GDO\Date\Time;
@@ -13,12 +14,12 @@ use GDO\News\Module_News;
 use GDO\News\GDO_News;
 use GDO\News\GDO_NewsText;
 use GDO\UI\GDT_Message;
-use GDO\DB\GDT_String;
 use GDO\UI\GDT_Divider;
 use GDO\UI\GDT_Tab;
 use GDO\UI\GDT_Tabs;
 use GDO\Util\Common;
 use GDO\UI\GDT_Title;
+
 /**
  * Write a news entry.
  * This is a bit more complex form with tabs for each edited language.
@@ -56,6 +57,8 @@ final class Write extends MethodForm
 	{
 		$news = GDO_News::table();
 		
+		$form->info(GDT_NewsStatus::make('status')->gdo($news)->renderCell());
+		
 		# Category select
 		$form->addFields(array(
 			$news->gdoColumn('news_category'),
@@ -67,7 +70,7 @@ final class Write extends MethodForm
 		foreach (Module_Language::instance()->cfgSupported() as $iso => $language)
 		{
 			# New tab
-			$tab = GDT_Tab::make('tab_'.$iso)->rawLabel($language->displayName());
+			$tab = GDT_Tab::make('tab_'.$iso)->labelRaw($language->displayName());
 
 			# 2 Fields
 			$primary = $iso === GWF_LANGUAGE;
@@ -114,8 +117,6 @@ final class Write extends MethodForm
 				}
 			}
 			
-			$form->addField(GDT_NewsStatus::make('status'));
-			
 			$form->withGDOValuesFrom($this->news);
 		}
 	}
@@ -125,16 +126,16 @@ final class Write extends MethodForm
 		# Update news
 		$news = $this->news ? $this->news : GDO_News::blank();
 		$news->setVars($form->getField('news_category')->getGDOData());
-		$news->replace();
+		$news->save();
 
 		# Update texts
 		foreach ($_POST[$form->name]['iso'] as $iso => $data)
 		{
 			$title = trim($data['newstext_title']);
 			$message = trim($data['newstext_message']);
-			if ($title || $message)
+			if ($title && $message)
 			{
-				$text = GDO_NewsText::blank(array(
+				GDO_NewsText::blank(array(
 					'newstext_news' => $news->getID(),
 					'newstext_lang' => $iso,
 					'newstext_title' => $title,
