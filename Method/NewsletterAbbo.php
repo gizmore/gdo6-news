@@ -105,7 +105,7 @@ final class NewsletterAbbo extends MethodForm
 		}
 		else
 		{
-			GDO_Newsletter::table()->deleteWhere('newsletter_user='.$user->getID())->exec();
+			GDO_Newsletter::table()->deleteWhere('newsletter_user='.$user->getID());
 			return $this->message('msg_newsletter_unsubscribed');
 		}
 	}
