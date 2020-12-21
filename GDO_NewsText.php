@@ -1,5 +1,6 @@
 <?php
 namespace GDO\News;
+
 use GDO\Core\GDO;
 use GDO\DB\GDT_CreatedAt;
 use GDO\DB\GDT_CreatedBy;
@@ -7,6 +8,7 @@ use GDO\DB\GDT_Object;
 use GDO\Language\GDT_Language;
 use GDO\UI\GDT_Message;
 use GDO\UI\GDT_Title;
+
 final class GDO_NewsText extends GDO
 {
 	###########
@@ -28,5 +30,11 @@ final class GDO_NewsText extends GDO
 	### Getter ###
 	##############
 	public function getTitle() { return $this->getVar('newstext_title'); }
-	public function getMessage() { return $this->getVar('newstext_message'); }
+	public function getMessage() { return $this->getVar('newstext_message_input'); }
+	public function displayMessage() { $this->getMessageColumn()->renderCell(); }
+	
+	/**
+	 * @return GDT_Message
+	 */
+	public function getMessageColumn() { return $this->gdoColumn('newstext_message'); }
 }

@@ -13,10 +13,16 @@ use GDO\Language\Trans;
 use GDO\Core\GDT_Template;
 use GDO\DB\GDT_Checkbox;
 use GDO\User\GDO_User;
+use GDO\DB\GDT_Join;
+use GDO\Language\GDO_Language;
+
 /**
- * News database.
+ * News database entity and table.
+ * 
+ * @TODO make title and description searchable with GDT_Table. Either a GDT_Join with user language... or a GDT_Virtual with subselect.
+ * 
  * @author gizmore
- * @version 5.0
+ * @version 6.10
  * @since 2.0
  * @see NewsText
  */
@@ -35,7 +41,8 @@ final class GDO_News extends GDO implements RSSItem
 	###########
 	public function gdoColumns()
 	{
-		return array(
+	    $iso = GDO_Language::current()->getISO();
+	    return [
 			GDT_AutoInc::make('news_id'),
 			GDT_Category::make('news_category')->emptyInitial(t('no_category')),
 			GDT_Checkbox::make('news_visible')->notNull()->initial('0'),
@@ -43,7 +50,9 @@ final class GDO_News extends GDO implements RSSItem
 			GDT_DateTime::make('news_sent')->label('news_sent'), # is out of queue? (sent)
 			GDT_CreatedAt::make('news_created'),
 			GDT_CreatedBy::make('news_creator'),
-		);
+		    
+		    GDT_Join::make('newstext')->join("gdo_newstext AS nt ON nt.newstext_news = gdo_news.news_id AND nt.newstext_lang = '$iso'")
+	    ];
 	}
 	
 	##############

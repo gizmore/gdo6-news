@@ -19,6 +19,8 @@ use GDO\UI\GDT_Tab;
 use GDO\UI\GDT_Tabs;
 use GDO\Util\Common;
 use GDO\UI\GDT_Title;
+use GDO\Core\GDT_ResponseCard;
+use GDO\UI\GDT_Bar;
 
 /**
  * Write a news entry.
@@ -75,13 +77,15 @@ final class Write extends MethodForm
 			# 2 Fields
 			$primary = $iso === GWF_LANGUAGE;
 			$title = GDT_Title::make("iso][$iso][newstext_title")->label('title')->notNull($primary);
-			$message = GDT_Message::make("iso][$iso][newstext_message")->label('message')->notNull($primary);
+			$message = $this->makeMessageField($iso); 
+			
 			if ($this->news)
 			{ # Old values
 				if ($text = $this->news->getText($iso, false))
 				{
 					$title->var($text->getTitle());
-					$message->var($text->getMessage());
+					$messageText = $text->getMessage();
+					$message->var($messageText);
 				}
 			}
 			# Add
@@ -90,65 +94,92 @@ final class Write extends MethodForm
 			$tabs->tab($tab);
 		}
 		$form->addField($tabs);
-		
+
+			
 		# Buttons
-		$form->addFields(array(
-			GDT_Submit::make()->label('btn_save'),
-			GDT_AntiCSRF::make(),
-		));
+	    $cont = GDT_Bar::make()->horizontal();
+	    $cont->addField(GDT_Submit::make()->label('btn_save'));
 		
 		# Dynamic buttons
 		if ($this->news)
 		{
-			$form->addFields(array(
-				GDT_Submit::make('preview')->label('btn_preview'),
-			));
+			$cont->addField(GDT_Submit::make('preview')->label('btn_preview'));
 			
 			if (!$this->news->isVisible())
 			{
-				$form->addField(GDT_Submit::make('visible')->label('btn_visible'));
+			    $cont->addField(GDT_Submit::make('visible')->label('btn_visible'));
 			}
 			else
 			{
-				$form->addField(GDT_Submit::make('invisible')->label('btn_invisible'));
+			    $cont->addField(GDT_Submit::make('invisible')->label('btn_invisible'));
 				if (!$this->news->isSent())
 				{
-					$form->addField(GDT_Submit::make('send')->label('btn_send_mail'));
+				    $cont->addField(GDT_Submit::make('send')->label('btn_send_mail'));
 				}
 			}
-			
-			$form->withGDOValuesFrom($this->news);
 		}
+
+		$form->addField($cont);
+		
+		$form->addField(GDT_AntiCSRF::make());
+		
+		if ($this->news)
+		{
+		    $form->withGDOValuesFrom($this->news);
+		}
+	}
+	
+	/**
+	 * Make a message field for an iso.
+	 * @param string $iso
+	 * @return GDT_Message
+	 */
+	private function makeMessageField($iso)
+	{
+	    $primary = $iso === GWF_LANGUAGE;
+	    return GDT_Message::make("iso][$iso][newstext_message")->label('message')->notNull($primary);
+	}
+	
+	private function updateNews(GDT_Form $form)
+	{
+	    # Update news
+	    $news = $this->news ? $this->news : GDO_News::blank();
+	    $catData = $form->getField('news_category')->getGDOData();
+	    $news->setVars($catData);
+	    $news->save();
+	    
+	    # Update texts
+	    foreach ($_POST[$form->name]['iso'] as $iso => $data)
+	    {
+	        $title = trim($data['newstext_title']);
+	        $message = trim($data['newstext_message']);
+	        if ($title && $message)
+	        {
+	            GDO_NewsText::blank([
+	                'newstext_news' => $news->getID(),
+	                'newstext_lang' => $iso,
+	                'newstext_title' => $title,
+	                'newstext_message' => $message,
+	            ])->replace();
+	        }
+	    }
+	    
+	    if ($this->news)
+	    {
+	        $this->news->tempUnset('newstexts');
+	        $this->news->recache();
+	        $this->resetForm();
+	    }
+	    
+	    return $news;
 	}
 	
 	public function formValidated(GDT_Form $form)
 	{
-		# Update news
-		$news = $this->news ? $this->news : GDO_News::blank();
-		$news->setVars($form->getField('news_category')->getGDOData());
-		$news->save();
+	    $news = $this->updateNews($form);
 
-		# Update texts
-		foreach ($_POST[$form->name]['iso'] as $iso => $data)
-		{
-			$title = trim($data['newstext_title']);
-			$message = trim($data['newstext_message']);
-			if ($title && $message)
-			{
-				GDO_NewsText::blank(array(
-					'newstext_news' => $news->getID(),
-					'newstext_lang' => $iso,
-					'newstext_title' => $title,
-					'newstext_message' => $message,
-				))->replace();
-			}
-		}
-		
 		if ($this->news)
 		{
-			$this->news->tempUnset('newstexts');
-			$this->news->recache();
-			$this->resetForm();
 			return $this->message('msg_news_edited')->add($this->renderPage());
 		}
 		
@@ -178,6 +209,13 @@ final class Write extends MethodForm
 	############
 	public function onSubmit_preview(GDT_Form $form)
 	{
+	    # Save
+	    $this->updateNews($form);
+	    
+	    # Show card and form
+	    return GDT_ResponseCard::make()->gdo($this->news)->
+    	    addField(GDT_Divider::make())->
+    	    add($this->renderPage());
 	}
 	
 	public function onSubmit_send(GDT_Form $form)

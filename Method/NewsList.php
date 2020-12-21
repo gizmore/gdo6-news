@@ -12,6 +12,15 @@ class NewsList extends MethodQueryCards
 	
 	public function isGuestAllowed() { return Module_News::instance()->cfgGuestNews(); }
 	
+	public function gdoHeaders()
+	{
+	    return $this->gdoTable()->getGDOColumns([
+	        'news_creator', 'news_created']);
+	}
+	
+	public function getDefaultOrder() { return 'news_created'; }
+	public function getDefaultOrderDir() { return false; }
+	
 	public function getQuery()
 	{
 		$query = parent::getQuery();
@@ -20,7 +29,7 @@ class NewsList extends MethodQueryCards
 	
 	public function filterNewsQuery(Query $query)
 	{
-		return $query->where('news_visible')->orderDESC('news_created');
+		return $query->where('news_visible');
 	}
 	
 	public function execute()
