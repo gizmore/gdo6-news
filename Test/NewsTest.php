@@ -8,7 +8,13 @@ use function PHPUnit\Framework\assertEquals;
 use GDO\News\GDO_News;
 use function PHPUnit\Framework\assertStringContainsString;
 
-final class testNews extends TestCase
+/**
+ * Tests for the news module.
+ * @author gizmore
+ * @version 6.10
+ * @since 6.10
+ */
+final class NewsTest extends TestCase
 {
     public function testNews()
     {
@@ -29,11 +35,12 @@ final class testNews extends TestCase
         $this->assert200("Check if a News::Write entry can be created.");
         assertEquals(1, GDO_News::table()->countWhere(), 'check if news were created.');
         
+        $getParameters = ['id' => '1'];
         $parameters['iso']['de']['newstext_message'] = '<div>Ich freue zu verkünden<br/><br/>Eine umfangreiche GDO6-Demo hat das Licht der Welt entdeckt.<br/><br/>Viel Spaß beim hacken!</div>';
-        $response = MethodTest::make()->method($method)->parameters($parameters)->execute();
-        assertStringContainsString('freue zu verk', $response->renderCell(), 'Check if news message got changed.');
+        $response = MethodTest::make()->method($method)->getParameters($getParameters)->parameters($parameters)->execute();
+        $html = $response->render();
+        assertStringContainsString('freue zu verk', $html, 'Check if news message got changed.');
         assertEquals(1, GDO_News::table()->countWhere(), 'check if newscount still 1');
-        
     }
     
 }

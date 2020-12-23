@@ -184,7 +184,8 @@ final class Write extends MethodForm
 		}
 		
 		$hrefEdit = href('News', 'Write', '&id='.$news->getID());
-		return Website::redirectMessage('msg_news_created', null, $hrefEdit);
+		Website::redirectMessage('msg_news_created', null, $hrefEdit);
+		return $this->renderPage();
 	}
 	
 	public function onSubmit_visible(GDT_Form $form)
