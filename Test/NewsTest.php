@@ -36,10 +36,10 @@ final class NewsTest extends TestCase
         assertEquals(1, GDO_News::table()->countWhere(), 'check if news were created.');
         
         $getParameters = ['id' => '1'];
-        $parameters['iso']['de']['newstext_message'] = '<div>Ich freue zu verkünden<br/><br/>Eine umfangreiche GDO6-Demo hat das Licht der Welt entdeckt.<br/><br/>Viel Spaß beim hacken!</div>';
+        $parameters['iso']['de']['newstext_message'] = '<div>Ich freue mich zu verkünden<br/><br/>Eine umfangreiche GDO6-Demo hat das Licht der Welt entdeckt.<br/><br/>Viel Spaß beim hacken!</div>';
         $response = MethodTest::make()->method($method)->getParameters($getParameters)->parameters($parameters)->execute();
         $html = $response->render();
-        assertStringContainsString('freue zu verk', $html, 'Check if news message got changed.');
+        assertStringContainsString('freue mich zu verk', $html, 'Check if news message got changed.');
         assertEquals(1, GDO_News::table()->countWhere(), 'check if newscount still 1');
     }
     
