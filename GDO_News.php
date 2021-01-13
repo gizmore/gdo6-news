@@ -90,10 +90,10 @@ final class GDO_News extends GDO implements RSSItem
 	### Texts ###
 	#############
 	public function getTitle() { return $this->getTextVar('newstext_title'); }
-	public function getMessage() { return $this->getTextVar('newstext_message'); }
+	public function getMessage() { return $this->getTextVar('newstext_message_output'); }
 
 	public function getTitleISO($iso) { return $this->getTextVarISO('newstext_title', $iso); }
-	public function getMessageISO($iso) { return $this->getTextVarISO('newstext_message', $iso); }
+	public function getMessageISO($iso) { return $this->getTextVarISO('newstext_message_output', $iso); }
 	
 	public function getTextVar($key) { return $this->getText(Trans::$ISO)->getVar($key); }
 	public function getTextValue($key) { return $this->getText(Trans::$ISO)->getValue($key); }
@@ -104,7 +104,7 @@ final class GDO_News extends GDO implements RSSItem
 	public function displayMessage()
 	{
 		$text = $this->getTxt();
-		return $text->gdoColumn('newstext_message')->value($text->getMessage())->renderCell();
+		return $text->gdoColumn('newstext_message')->var($text->getMessage())->renderCell();
 	}
 
 	public function renderCard() { return GDT_Template::php('News', 'card/gwf_news.php', ['gdo'=>$this]); }
@@ -159,6 +159,6 @@ final class GDO_News extends GDO implements RSSItem
 	public function getRSSPubDate() { return $this->getValue('news_created'); }
 	public function getRSSGUID() { return $this->gdoHashcode(); }
 	public function getRSSLink() { return url('News', 'Comments', '&id='.$this->getID()); }
-	public function getRSSDescription() { return $this->getMessage(); }
+	public function getRSSDescription() { return $this->displayMessage(); }
 	
 }
