@@ -1,10 +1,12 @@
 <?php
 namespace GDO\News;
+
 use GDO\Core\GDT_Template;
-use GDO\UI\GDT_Label;
+use GDO\UI\GDT_Paragraph;
 use GDO\User\GDO_User;
 use GDO\UI\WithIcon;
-final class GDT_NewsletterStatus extends GDT_Label
+
+final class GDT_NewsletterStatus extends GDT_Paragraph
 {
 	use WithIcon;
 	

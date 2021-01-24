@@ -3,6 +3,7 @@ use GDO\UI\GDT_Button;
 use GDO\UI\GDT_Card;
 use GDO\UI\GDT_HTML;
 use GDO\UI\GDT_Label;
+use GDO\UI\GDT_Headline;
 
 $user = $gdo->getCreator();
 
@@ -10,7 +11,7 @@ $card = GDT_Card::make('news')->gdo($gdo);
 
 $card->creatorHeader();
 
-$card->title(GDT_Label::make()->labelRaw($gdo->getTitle()));
+$card->title(GDT_Headline::make()->textRaw($gdo->getTitle()));
 
 $card->addField(GDT_HTML::withHTML($gdo->displayMessage()));
 
