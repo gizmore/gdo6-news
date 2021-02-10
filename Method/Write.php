@@ -123,10 +123,10 @@ final class Write extends MethodForm
 		
 		$form->addField(GDT_AntiCSRF::make());
 		
-		if ($this->news)
-		{
-		    $form->withGDOValuesFrom($this->news);
-		}
+// 		if ($this->news)
+// 		{
+// 		    $form->withGDOValuesFrom($this->news);
+// 		}
 	}
 	
 	/**
