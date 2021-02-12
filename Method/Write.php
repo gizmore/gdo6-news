@@ -94,39 +94,30 @@ final class Write extends MethodForm
 			$tabs->tab($tab);
 		}
 		$form->addField($tabs);
-
 			
 		# Buttons
-	    $cont = GDT_Bar::make()->horizontal();
-	    $cont->addField(GDT_Submit::make()->label('btn_save'));
-		
+	    $form->actions()->addField(GDT_Submit::make()->label('btn_save'));
+	    
 		# Dynamic buttons
 		if ($this->news)
 		{
-			$cont->addField(GDT_Submit::make('preview')->label('btn_preview'));
+			$form->actions()->addField(GDT_Submit::make('preview')->label('btn_preview'));
 			
 			if (!$this->news->isVisible())
 			{
-			    $cont->addField(GDT_Submit::make('visible')->label('btn_visible'));
+			    $form->actions()->addField(GDT_Submit::make('visible')->label('btn_visible'));
 			}
 			else
 			{
-			    $cont->addField(GDT_Submit::make('invisible')->label('btn_invisible'));
+			    $form->actions()->addField(GDT_Submit::make('invisible')->label('btn_invisible'));
 				if (!$this->news->isSent())
 				{
-				    $cont->addField(GDT_Submit::make('send')->label('btn_send_mail'));
+				    $form->actions()->addField(GDT_Submit::make('send')->label('btn_send_mail'));
 				}
 			}
 		}
 
-		$form->addField($cont);
-		
 		$form->addField(GDT_AntiCSRF::make());
-		
-// 		if ($this->news)
-// 		{
-// 		    $form->withGDOValuesFrom($this->news);
-// 		}
 	}
 	
 	/**

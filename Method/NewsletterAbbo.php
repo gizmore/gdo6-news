@@ -53,16 +53,16 @@ final class NewsletterAbbo extends MethodForm
 		$user = GDO_User::current();
 		$mem = $user->isMember();
 		$subscribed = $mem ? GDO_Newsletter::hasSubscribed($user) : true;
-		
+		$form->gdo($user);
 		$form->addFields(array(
 			GDT_NewsletterStatus::make('status')->gdo($user),
 			GDT_Enum::make('yn')->enumValues('yes', 'no')->initial($subscribed?'yes':'no')->label('newsletter_subscribed')->writable($mem),
 			GDT_EmailFormat::make('newsletter_fmt')->initial($mem?$user->getMailFormat():GDT_EmailFormat::HTML)->writable(!$mem),
 			GDT_Language::make('newsletter_lang')->initial($mem?$user->getLangISO():Trans::$ISO)->writable(!$mem),
 			GDT_Email::make('newsletter_email')->initial($user->getMail())->writable(!$mem),
-			GDT_Submit::make(),
 			GDT_AntiCSRF::make(),
 		));
+		$form->actions()->addField(GDT_Submit::make());
 	}
 	public function formValidated(GDT_Form $form)
 	{
