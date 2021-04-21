@@ -1,12 +1,12 @@
 <?php
 namespace GDO\News;
 
+use GDO\Core\Application;
 use GDO\Core\GDO_Module;
 use GDO\DB\GDT_Checkbox;
 use GDO\UI\GDT_Link;
 use GDO\Core\GDT_Template;
 use GDO\UI\GDT_Page;
-use GDO\UI\GDT_HTML;
 
 /**
  * News module.
@@ -65,12 +65,15 @@ final class Module_News extends GDO_Module
 	
 	public function renderAdminTabs()
 	{
-		GDT_Page::$INSTANCE->topTabs->addField(GDT_Template::make()->template('News', 'admin_tabs.php'));
+	    if (Application::instance()->isHTML())
+	    {
+	        GDT_Page::$INSTANCE->topTabs->addField(GDT_Template::make()->template('News', 'admin_tabs.php'));
+	    }
 	}
 	
 	public function onInitSidebar()
 	{
-// 	    if ($this->cfgLeftBar())
+	    if ($this->cfgLeftBar())
 	    {
     	    GDT_Page::$INSTANCE->leftNav->addField(
     	        GDT_Link::make('link_news')->href(href('News', 'NewsList')));
