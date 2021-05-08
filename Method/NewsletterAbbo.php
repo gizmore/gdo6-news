@@ -66,7 +66,7 @@ final class NewsletterAbbo extends MethodForm
 	}
 	public function formValidated(GDT_Form $form)
 	{
-		return $this->formAction($form)->add($this->renderPage());
+		return $this->formAction($form)->addField($this->renderPage());
 	}
 	
 	public function formAction(GDT_Form $form)

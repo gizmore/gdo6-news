@@ -170,7 +170,7 @@ final class Write extends MethodForm
 
 		if ($this->news)
 		{
-			return $this->message('msg_news_edited')->add($this->renderPage());
+			return $this->message('msg_news_edited')->addField($this->renderPage());
 		}
 		
 		$hrefEdit = href('News', 'Write', '&id='.$news->getID());
@@ -185,14 +185,14 @@ final class Write extends MethodForm
             'news_created' => Time::getDate(),
 	    ));
 	    $this->resetForm();
-		return $this->message('msg_news_visible')->add($this->renderPage());
+		return $this->message('msg_news_visible')->addField($this->renderPage());
 	}
 	
 	public function onSubmit_invisible(GDT_Form $form)
 	{
 		$this->news->saveVar('news_visible', '0');
 		$this->resetForm();
-		return $this->message('msg_news_invisible')->add($this->renderPage());
+		return $this->message('msg_news_invisible')->addField($this->renderPage());
 	}
 	
 	############
@@ -212,7 +212,7 @@ final class Write extends MethodForm
 	public function onSubmit_send(GDT_Form $form)
 	{
 		$this->news->saveVar('news_send', Time::getDate());
-		return $this->message('msg_news_queue')->add($this->renderPage());
+		return $this->message('msg_news_queue')->addField($this->renderPage());
 	}
 	
 }

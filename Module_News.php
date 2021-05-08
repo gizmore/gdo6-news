@@ -62,15 +62,13 @@ final class Module_News extends GDO_Module
 	{
 	    
 	    GDT_Page::$INSTANCE->topTabs->addField(
-	        $this->responsePHP('tabs.php'));
+	        $this->templatePHP('tabs.php'));
 	}
 	
 	public function renderAdminTabs()
 	{
-	    if (Application::instance()->isHTML())
-	    {
-	        GDT_Page::$INSTANCE->topTabs->addField(GDT_Template::make()->template('News', 'admin_tabs.php'));
-	    }
+        GDT_Page::$INSTANCE->topTabs->addField(
+            GDT_Template::make()->template('News', 'admin_tabs.php'));
 	}
 	
 	public function onInitSidebar()
