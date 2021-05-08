@@ -60,7 +60,9 @@ final class Module_News extends GDO_Module
 	############
 	public function renderTabs()
 	{
-		return $this->responsePHP('tabs.php');
+	    
+	    GDT_Page::$INSTANCE->topTabs->addField(
+	        $this->responsePHP('tabs.php'));
 	}
 	
 	public function renderAdminTabs()

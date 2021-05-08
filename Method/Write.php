@@ -20,15 +20,14 @@ use GDO\UI\GDT_Tabs;
 use GDO\Util\Common;
 use GDO\UI\GDT_Title;
 use GDO\Core\GDT_ResponseCard;
-use GDO\UI\GDT_Bar;
 
 /**
  * Write a news entry.
  * This is a bit more complex form with tabs for each edited language.
  * 
  * @author gizmore
- * @since 3.00
- * @version 6.05
+ * @version 6.10.3
+ * @since 3.0.0
  */
 final class Write extends MethodForm
 {

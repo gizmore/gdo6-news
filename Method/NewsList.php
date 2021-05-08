@@ -32,12 +32,17 @@ class NewsList extends MethodQueryCards
 		return $query->where('news_visible');
 	}
 	
-	public function execute()
+	public function beforeExecute()
 	{
-		$tVars = array(
-			'response' => parent::execute(),
-		);
-		return $this->templatePHP('news.php', $tVars);
+	    Module_News::instance()->renderTabs();
 	}
+	
+// 	public function execute()
+// 	{
+// 		$tVars = array(
+// 			'response' => parent::execute(),
+// 		);
+// 		return $this->templatePHP('news.php', $tVars);
+// 	}
 	
 }
