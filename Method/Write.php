@@ -75,7 +75,7 @@ final class Write extends MethodForm
 			$tab = GDT_Tab::make('tab_'.$iso)->labelRaw($language->displayName());
 
 			# 2 Fields
-			$primary = $iso === GWF_LANGUAGE;
+			$primary = $iso === GDO_LANGUAGE;
 			$title = GDT_Title::make("iso][$iso][newstext_title")->label('title')->notNull($primary);
 			$message = $this->makeMessageField($iso); 
 			
@@ -127,7 +127,7 @@ final class Write extends MethodForm
 	 */
 	private function makeMessageField($iso)
 	{
-	    $primary = $iso === GWF_LANGUAGE;
+	    $primary = $iso === GDO_LANGUAGE;
 	    return GDT_Message::make("iso][$iso][newstext_message")->label('message')->notNull($primary);
 	}
 	
