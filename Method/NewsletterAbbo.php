@@ -36,7 +36,7 @@ final class NewsletterAbbo extends MethodForm
 	public function execute()
 	{
 		$tabs = Module_News::instance()->renderTabs();
-		return $tabs->add($this->templateNewsletter());
+		return $tabs->addField($this->templateNewsletter());
 	}
 	
 	public function templateNewsletter()
