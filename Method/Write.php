@@ -206,7 +206,7 @@ final class Write extends MethodForm
 	    # Show card and form
 	    return GDT_ResponseCard::make()->gdo($this->news)->
     	    addField(GDT_Divider::make())->
-    	    add($this->renderPage());
+    	    addField($this->renderPage());
 	}
 	
 	public function onSubmit_send(GDT_Form $form)
