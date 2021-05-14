@@ -1,7 +1,6 @@
 <?php
 namespace GDO\News\Method;
 
-use GDO\DB\Query;
 use GDO\News\Module_News;
 use GDO\News\GDO_News;
 use GDO\Table\MethodQueryCards;
@@ -9,6 +8,8 @@ use GDO\Table\MethodQueryCards;
 class NewsList extends MethodQueryCards
 {
 	public function gdoTable() { return GDO_News::table(); }
+	
+	public function useFetchInto() { return false; }
 	
 	public function isGuestAllowed() { return Module_News::instance()->cfgGuestNews(); }
 	
@@ -23,26 +24,12 @@ class NewsList extends MethodQueryCards
 	
 	public function getQuery()
 	{
-		$query = parent::getQuery();
-		return $this->filterNewsQuery($query);
-	}
-	
-	public function filterNewsQuery(Query $query)
-	{
-		return $query->where('news_visible');
+		return parent::getQuery()->where('news_visible');
 	}
 	
 	public function beforeExecute()
 	{
 	    Module_News::instance()->renderTabs();
 	}
-	
-// 	public function execute()
-// 	{
-// 		$tVars = array(
-// 			'response' => parent::execute(),
-// 		);
-// 		return $this->templatePHP('news.php', $tVars);
-// 	}
 	
 }

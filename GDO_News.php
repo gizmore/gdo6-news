@@ -132,7 +132,8 @@ final class GDO_News extends GDO implements RSSItem
 		}
 		if ($fallback)
 		{
-			return isset($texts[GDO_LANGUAGE]) ? $texts[GDO_LANGUAGE] : array_shift($texts);
+			return isset($texts[GDO_LANGUAGE]) ?
+			    $texts[GDO_LANGUAGE] : array_shift($texts);
 		}
 	}
 

@@ -1,7 +1,5 @@
 <?php
 use GDO\News\GDT_NewsStatus;
-use GDO\UI\GDT_Panel;
-use GDO\UI\GDT_Label;
 use GDO\UI\GDT_Paragraph;
 /** @var $field GDT_NewsStatus **/
 $news = $field->getNews();

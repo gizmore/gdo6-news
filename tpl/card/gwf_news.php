@@ -2,7 +2,6 @@
 use GDO\UI\GDT_Button;
 use GDO\UI\GDT_Card;
 use GDO\UI\GDT_HTML;
-use GDO\UI\GDT_Label;
 use GDO\UI\GDT_Headline;
 
 $user = $gdo->getCreator();

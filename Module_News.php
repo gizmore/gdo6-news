@@ -1,7 +1,6 @@
 <?php
 namespace GDO\News;
 
-use GDO\Core\Application;
 use GDO\Core\GDO_Module;
 use GDO\DB\GDT_Checkbox;
 use GDO\UI\GDT_Link;
@@ -11,8 +10,8 @@ use GDO\UI\GDT_Page;
 /**
  * News module.
  * @author gizmore
- * @version 6.10
- * @since 6.03
+ * @version 6.10.3
+ * @since 6.3.0
  */
 final class Module_News extends GDO_Module
 {
@@ -60,7 +59,6 @@ final class Module_News extends GDO_Module
 	############
 	public function renderTabs()
 	{
-	    
 	    GDT_Page::$INSTANCE->topTabs->addField(
 	        $this->templatePHP('tabs.php'));
 	}
