@@ -33,10 +33,14 @@ final class NewsletterAbbo extends MethodForm
 		return false;
 	}
 	
+	public function beforeExecute()
+	{
+	    Module_News::instance()->renderTabs();
+	}
+	
 	public function execute()
 	{
-		$tabs = Module_News::instance()->renderTabs();
-		return $tabs->addField($this->templateNewsletter());
+		return $this->templateNewsletter();
 	}
 	
 	public function templateNewsletter()
