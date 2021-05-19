@@ -39,7 +39,7 @@ return array(
 'newsletter_sub_guest_unknown' => 'Per ospiti non é possibile indagare lo stato del Newsletter.',
 'newsletter_info_subscribed' => 'Avete abbonato la Newsletter. Le impostazioni Mail possono essere effetuate qui: %s', 
 'newsletter_info_not_subscribed' => 'Non avete abbonato la Newsletter.',
-'link_mail_settings' => 'Impostazioni conto',
+'link_mail_settings' => 'Impostazioni email',
 'msg_newsletter_subscribed' => 'Avete abbonato la Newsletter.',
 'msg_newsletter_unsubscribed' => 'Avete disabbonato la Newsletter.',
 'err_newsletter_already_subscribed' => 'Avete giá abbonato la Newsletter.',

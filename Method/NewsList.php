@@ -7,6 +7,8 @@ use GDO\Table\MethodQueryCards;
 
 class NewsList extends MethodQueryCards
 {
+    public function getTitleLangKey() { return 'link_news'; }
+    
 	public function gdoTable() { return GDO_News::table(); }
 	
 	public function useFetchInto() { return false; }
@@ -24,7 +26,7 @@ class NewsList extends MethodQueryCards
 	
 	public function getQuery()
 	{
-		return parent::getQuery()->where('news_visible');
+		return parent::getQuery()->where('news_visible')->joinObject('newstext');
 	}
 	
 	public function beforeExecute()

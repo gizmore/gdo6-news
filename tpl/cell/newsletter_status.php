@@ -8,7 +8,7 @@ $user = $field->getUser();
 
 if ($user->isMember())
 {
-	$linkSettings = GDT_Link::anchor(href('Account', 'Form'), t('link_mail_settings'));
+	$linkSettings = GDT_Link::anchor(href('Account', 'Settings', '&module=Mail'), t('link_mail_settings'));
 	if (GDO_Newsletter::hasSubscribed($user))
 	{
 		$field->icon('check');

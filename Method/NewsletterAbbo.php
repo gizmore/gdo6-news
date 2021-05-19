@@ -38,20 +38,6 @@ final class NewsletterAbbo extends MethodForm
 	    Module_News::instance()->renderTabs();
 	}
 	
-	public function execute()
-	{
-		return $this->templateNewsletter();
-	}
-	
-	public function templateNewsletter()
-	{
-		$tVars = array(
-			'form' => $this->getForm(),
-			'response' => parent::execute(),
-		);
-		return $this->templatePHP('newsletter.php', $tVars);
-	}
-	
 	public function createForm(GDT_Form $form)
 	{
 		$user = GDO_User::current();

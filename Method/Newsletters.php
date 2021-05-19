@@ -16,6 +16,8 @@ final class Newsletters extends MethodQueryTable
 {
 	use MethodAdmin;
 	
+	public function getTitleLangKey() { return 'link_newsletters'; }
+	
 	public function getPermission() { return 'staff'; }
 	
 	public function gdoTable() { return GDO_Newsletter::table(); }

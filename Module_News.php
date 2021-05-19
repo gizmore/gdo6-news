@@ -22,7 +22,7 @@ final class Module_News extends GDO_Module
 	##############
 	public function href_administrate_module() { return href('News', 'Admin'); }
 	public function onLoadLanguage() { $this->loadLanguage('lang/news'); }
-	public function getDependencies() { return ['Comment', 'Category']; }
+	public function getDependencies() { return ['Comment', 'Category', 'Mail']; }
 	public function getClasses()
 	{
 	    return [
