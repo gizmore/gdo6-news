@@ -21,8 +21,7 @@ final class Admin extends MethodQueryTable
 	
 	public function getPermission() { return 'staff'; }
 	
-	public function getDefaultOrder() { return 'news_created'; }
-	public function getDefaultOrderDir() { return false; }
+	public function getDefaultOrder() { return 'news_created DESC'; }
 	
 	public function gdoHeaders()
 	{

@@ -21,8 +21,7 @@ class NewsList extends MethodQueryCards
 	        'news_creator', 'news_created']);
 	}
 	
-	public function getDefaultOrder() { return 'news_created'; }
-	public function getDefaultOrderDir() { return false; }
+	public function getDefaultOrder() { return 'news_created DESC'; }
 	
 	public function getQuery()
 	{
