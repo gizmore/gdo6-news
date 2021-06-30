@@ -15,12 +15,13 @@ use GDO\DB\GDT_Checkbox;
 use GDO\User\GDO_User;
 use GDO\DB\GDT_Join;
 use GDO\Language\GDO_Language;
+use GDO\Date\Time;
 
 /**
  * News database entity and table.
  * 
  * @author gizmore
- * @version 6.10.3
+ * @version 6.10.4
  * @since 2.0.0
  * @see GDO_NewsText
  */
@@ -44,7 +45,7 @@ final class GDO_News extends GDO implements RSSItem
 			GDT_AutoInc::make('news_id'),
 			GDT_Category::make('news_category')->emptyInitial(t('no_category')),
 			GDT_Checkbox::make('news_visible')->notNull()->initial('0'),
-			GDT_DateTime::make('news_send')->label('news_sending'), # is in queue? (sending)
+			GDT_DateTime::make('news_send')->label('news_sending')->format(Time::FMT_MINUTE), # is in queue? (sending)
 			GDT_DateTime::make('news_sent')->label('news_sent'), # is out of queue? (sent)
 			GDT_CreatedAt::make('news_created'),
 			GDT_CreatedBy::make('news_creator'),
