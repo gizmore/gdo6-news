@@ -15,9 +15,13 @@ final class RSS
 	private $webURL;
 	private $feedURL;
 		
-	public static function displayDate($time=null)
+	public static function displayDate(\DateTime $date=null)
 	{
-	    return date('r', $time===null ? Application::$TIME : $time);
+	    if ($date === null)
+	    {
+	        $date = \DateTime::createFromFormat('U', Application::$TIME);
+	    }
+	    return $date->format(\DateTime::RSS);
 	}
 	
 	public static function displayCData($data)
