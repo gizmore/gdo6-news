@@ -88,7 +88,7 @@ final class RSS
 			'feed_title' => $this->title,
 			'feed_description' => $this->descr,
 			'language' => Trans::$ISO,
-			'image_url' => GDT_Url::absolute('/favicon.ico'),
+			'image_url' => GDT_Url::absolute(GDO_WEB_ROOT . 'favicon.ico'),
 			'image_link' => $this->webURL,
 			'image_width' => '32',
 			'image_height' => '32',
