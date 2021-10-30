@@ -26,7 +26,7 @@ use GDO\Core\GDT_ResponseCard;
  * This is a bit more complex form with tabs for each edited language.
  * 
  * @author gizmore
- * @version 6.10.3
+ * @version 6.10.6
  * @since 3.0.0
  */
 final class Write extends MethodForm
@@ -75,7 +75,7 @@ final class Write extends MethodForm
 
 			# 2 Fields
 			$primary = $iso === GDO_LANGUAGE;
-			$title = GDT_Title::make("iso][$iso][newstext_title")->label('title')->notNull($primary);
+			$title = GDT_Title::make()->name("iso][$iso][newstext_title")->label('title')->notNull($primary);
 			$message = $this->makeMessageField($iso); 
 			
 			if ($this->news)
@@ -127,7 +127,7 @@ final class Write extends MethodForm
 	private function makeMessageField($iso)
 	{
 	    $primary = $iso === GDO_LANGUAGE;
-	    return GDT_Message::make("iso][$iso][newstext_message")->label('message')->notNull($primary);
+	    return GDT_Message::make()->name("iso][$iso][newstext_message")->label('message')->notNull($primary);
 	}
 	
 	private function updateNews(GDT_Form $form)

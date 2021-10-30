@@ -19,7 +19,7 @@ return array(
 ##################################################
 'newsletter_news' => 'NewsID',
 ##################################################
-'list_news_comments' => 'Kommetare',
+'list_news_comments' => 'Kommentare',
 ##################################################
 'ft_news_write' => 'Nachricht verfassen',
 'div_texts' => 'Nachrichtentexte',
