@@ -157,7 +157,7 @@ final class GDO_News extends GDO implements RSSItem
 	### RSSItem ###
 	###############
 	public function getRSSTitle() { return $this->getTitle(); }
-	public function getRSSPubDate() { return $this->getValue('news_created'); }
+	public function getRSSPubDate() { return $this->getVar('news_created'); }
 	public function getRSSGUID() { return $this->gdoHashcode(); }
 	public function getRSSLink() { return url('News', 'Comments', '&id='.$this->getID()); }
 	public function getRSSDescription() { return $this->displayMessage(); }

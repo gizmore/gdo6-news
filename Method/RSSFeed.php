@@ -10,7 +10,7 @@ final class RSSFeed extends Method
 	public function execute()
 	{
 		$query = GDO_News::table()->select()->limit(10);
-		$query->where("news_visible")->order('news_created', false);
+		$query->where("news_visible")->order('news_created DESC');
 		$items = $query->exec()->fetchAllObjects();
 		
 		$sitename = sitename();

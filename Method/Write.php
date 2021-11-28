@@ -26,7 +26,7 @@ use GDO\Core\GDT_ResponseCard;
  * This is a bit more complex form with tabs for each edited language.
  * 
  * @author gizmore
- * @version 6.10.6
+ * @version 6.11.0
  * @since 3.0.0
  */
 final class Write extends MethodForm
