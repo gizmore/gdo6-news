@@ -75,4 +75,5 @@ Il vostro %2$s Team.',
 'news_visible' => 'Visible',
 'news_sending' => 'In Queue?',
 'news_sent' => 'Sent',
+'rss_newsfeed' => '%s Newsfeed',
 );

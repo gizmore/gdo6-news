@@ -6,11 +6,12 @@ use GDO\DB\GDT_Checkbox;
 use GDO\UI\GDT_Link;
 use GDO\Core\GDT_Template;
 use GDO\UI\GDT_Page;
+use GDO\Core\Website;
 
 /**
  * News module.
  * @author gizmore
- * @version 6.10.3
+ * @version 6.11.0
  * @since 6.3.0
  */
 final class Module_News extends GDO_Module
@@ -53,6 +54,14 @@ final class Module_News extends GDO_Module
 	public function cfgGuestNewsletter() { return $this->getConfigValue('newsletter_guests'); }
 	public function cfgGuestComments() { return $this->getConfigValue('news_guest_comments'); }
 	public function cfgLeftBar() { return $this->getConfigValue('news_left_bar'); }
+	
+	############
+	### Init ###
+	############
+	public function onInit()
+	{
+		Website::addLink($this->href('RSSFeed'), 'application/rss+xml', 'alternate', t('rss_newsfeed', [sitename()]));
+	}
 	
 	############
 	### Navs ###

@@ -76,4 +76,5 @@ Das %2$s Team',
 'news_sending' => 'Im Queue?',
 'news_sent' => 'Gesendet',
 'list_news_newsletters' => '%s Newsletter abboniert',
+'rss_newsfeed' => '%s Newsfeed',
 );
