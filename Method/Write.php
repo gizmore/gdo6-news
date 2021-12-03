@@ -40,7 +40,7 @@ final class Write extends MethodForm
 	 */
 	private $news;
 	
-	public function init()
+	public function onInit()
 	{
 		if ($id = Common::getRequestString('id'))
 		{
