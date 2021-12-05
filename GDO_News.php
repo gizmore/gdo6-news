@@ -21,7 +21,7 @@ use GDO\Date\Time;
  * News database entity and table.
  * 
  * @author gizmore
- * @version 6.10.4
+ * @version 6.11.1
  * @since 2.0.0
  * @see GDO_NewsText
  */
@@ -41,6 +41,7 @@ final class GDO_News extends GDO implements RSSItem
 	public function gdoColumns()
 	{
 	    $iso = GDO_Language::current()->getISO();
+	    
 	    return [
 			GDT_AutoInc::make('news_id'),
 			GDT_Category::make('news_category')->emptyInitial(t('no_category')),
@@ -157,7 +158,7 @@ final class GDO_News extends GDO implements RSSItem
 	### RSSItem ###
 	###############
 	public function getRSSTitle() { return $this->getTitle(); }
-	public function getRSSPubDate() { return $this->getVar('news_created'); }
+	public function getRSSPubDate() { return Time::parseDateTimeDB($this->getVar('news_created')); }
 	public function getRSSGUID() { return $this->gdoHashcode(); }
 	public function getRSSLink() { return url('News', 'Comments', '&id='.$this->getID()); }
 	public function getRSSDescription() { return $this->displayMessage(); }

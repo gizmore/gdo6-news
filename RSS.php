@@ -11,6 +11,9 @@ final class RSS
 {
 	private $title;
 	private $descr;
+	/**
+	 * @var GDO_News[]
+	 */
 	private $items;
 	private $webURL;
 	private $feedURL;
