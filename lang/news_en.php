@@ -77,4 +77,6 @@ The %2$s Team',
 'news_sent' => 'Sent',
 'list_news_newsletters' => '%s Newsletters abbonemented', 
 'rss_newsfeed' => '%s Newsfeed',
+'mtitle_news_rssfeed' => 'Newsfeed',
+'mtitle_news_unsubscribe' => 'Unsubscribe Newsletter',
 );
